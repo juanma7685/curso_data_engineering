@@ -5,11 +5,9 @@ with
     renamed as (
 
         select
-            _row::int,
             product_id,
             quantity::int,
             month(month) as month,
-            _fivetran_synced as date_load
 
         from source
 
