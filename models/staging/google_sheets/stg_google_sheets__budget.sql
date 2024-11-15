@@ -7,7 +7,7 @@ with
         select
             product_id,
             quantity::int as quantity,
-            MONTH(month) as Datemonth,
+            month as fecha,
             TO_CHAR(month, 'Month') AS NombreMes
 
         from source
