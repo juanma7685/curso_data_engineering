@@ -6,8 +6,9 @@ with
 
         select
             product_id,
-            quantity::int,
-            month(month) as month,
+            quantity::int as quantity,
+            MONTH(month) as Datemonth,
+            TO_CHAR(month, 'Month') AS NombreMes
 
         from source
 
