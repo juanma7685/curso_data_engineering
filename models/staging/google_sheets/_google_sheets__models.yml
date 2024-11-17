@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_google_sheets__budget 
+    description: ""
+    columns:
+      - name: Budget_id
+        description: ""
+        tests:
+          - not_null
+          - unique
+      - name: product_id
+        description: "Identificador único del producto."
+        tests:
+          - not_null
+          - relationships:
+              to: source('sql_server_dbo','products')
+              field: product_id
+      - name: quantity
+        description: "Cantidad transformada a tipo entero."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+      - name: fecha
+        description: "Mes correspondiente al presupuesto."
+      - name: nombremes
+        description: "Nombre completo del mes en formato texto."

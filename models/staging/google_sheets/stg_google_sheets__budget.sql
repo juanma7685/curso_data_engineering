@@ -5,10 +5,11 @@ with
     renamed as (
 
         select
+            _ROW as Budget_id,
             product_id,
             quantity::int as quantity,
             month as fecha,
-            TO_CHAR(month, 'Month') AS NombreMes
+            to_char(month, 'Month') as nombremes
 
         from source
 
