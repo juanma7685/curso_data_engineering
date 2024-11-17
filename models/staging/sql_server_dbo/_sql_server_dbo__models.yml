@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_sql_server_dbo__promos
+    description: "Modelo que transforma los datos de la tabla Promos y genera una clave subrogada."
+    columns:
+      - name: surrogate_key
+        description: "Clave subrogada generada utilizando las columnas name, discount y status."
+        tests:
+          - unique
+          - not_null
+
+      - name: name
+        description: "Nombre de la promo."
+        tests:
+          - not_null
+
+      - name: discount
+        description: "Porcentaje del descuento aplicado a la promoción."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 100
+
+      - name: status
+        description: "Estado actual de la promoción."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              value_set: ["active", "inactive"]
+
+      - name: _fivetran_deleted
+        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
+
+      - name: _fivetran_synced
+        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+        tests:
+          - not_null
