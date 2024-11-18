@@ -4,7 +4,7 @@ models:
   - name: stg_sql_server_dbo__promos
     description: "Modelo que transforma los datos de la tabla Promos y genera una clave subrogada."
     columns:
-      - name: surrogate_key
+      - name: promo_id
         description: "Clave subrogada generada utilizando las columnas name, discount y status."
         tests:
           - unique
@@ -15,7 +15,7 @@ models:
         tests:
           - not_null
 
-      - name: discount
+      - name: discount_percentage
         description: "Porcentaje del descuento aplicado a la promoción."
         tests:
           - not_null

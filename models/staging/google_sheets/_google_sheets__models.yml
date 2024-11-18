@@ -4,7 +4,7 @@ models:
   - name: stg_google_sheets__budget 
     description: ""
     columns:
-      - name: Budget_id
+      - name: budget_id
         description: ""
         tests:
           - not_null
@@ -22,7 +22,7 @@ models:
           - not_null
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
-      - name: fecha
+      - name: mes
         description: "Mes correspondiente al presupuesto."
-      - name: nombremes
+      - name: nombre_mes
         description: "Nombre completo del mes en formato texto."
