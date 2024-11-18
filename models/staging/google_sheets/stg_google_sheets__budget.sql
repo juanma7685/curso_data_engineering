@@ -5,11 +5,11 @@ with
     renamed as (
 
         select
-            _ROW as Budget_id,
+            {{ dbt_utils.generate_surrogate_key(["product_id","quantity","month"])}} as budget_id,
             product_id,
             quantity::int as quantity,
-            month as fecha,
-            to_char(month, 'Month') as nombremes
+            Month(month) as mes,
+            to_char(month, 'Month') as nombre_mes
 
         from source
 
