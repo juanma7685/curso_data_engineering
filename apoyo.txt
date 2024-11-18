@@ -1,0 +1,2 @@
+stg_sql_server_dbo__
+dbt run-operation generate_model_yaml --args '{"model_names": ["stg_sql_server_dbo__orders"]}'

@@ -44,3 +44,4 @@ models:
 seeds:
   +database: "ALUMNO11_DEV_BRONZE_DB"
   +schema: "SEEDS"
+

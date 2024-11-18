@@ -6,7 +6,7 @@ with
 
     renamed as (
         select
-            {{ dbt_utils.generate_surrogate_key(["promo_id", "discount", "status"]) }} as promo_id,
+            {{ dbt_utils.generate_surrogate_key(["promo_id"]) }} as promo_id,
             promo_id as name,
             discount as discount_percentage,
             status,
@@ -17,7 +17,7 @@ with
 
     no_promo as (
         select
-            {{ dbt_utils.generate_surrogate_key(["'No Promo'", "'0'", "'inactive'"]) }} as promo_id,
+            {{ dbt_utils.generate_surrogate_key(["'No Promo'"]) }} as promo_id,
             'No Promo' as name,
             0 as discount_percentage,
             'inactive' as status,
