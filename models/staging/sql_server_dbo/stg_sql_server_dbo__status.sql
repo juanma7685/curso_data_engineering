@@ -12,4 +12,4 @@ renamed as (
     from source
 )
 
-select * from renamed
+select distinct * from renamed

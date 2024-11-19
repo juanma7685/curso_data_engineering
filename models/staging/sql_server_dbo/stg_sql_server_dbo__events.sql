@@ -15,7 +15,7 @@ renamed as (
         user_id,
         product_id,
         session_id,
-        {{ dbt_utils.generate_surrogate_key(['created_at']) }} as id_created_at,
+        CAST(created_at AS DATE),
         _fivetran_deleted,
         _fivetran_synced
 

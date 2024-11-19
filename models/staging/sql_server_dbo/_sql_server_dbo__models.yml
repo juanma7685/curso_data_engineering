@@ -49,10 +49,7 @@ models:
       - name: shipping_service
         description: "Nombre del servicio de envío."
         tests:
-          - not_null
-      - name: shipping_cost
-        description: "Costo del servicio de envío."
-        tests:
+          - unique
           - not_null
 
   - name: stg_sql_server_dbo__products
@@ -94,17 +91,19 @@ models:
         description: "Clave subrogada generada utilizando la columna shipping_service."
         tests:
           - not_null
+      - name: shipping_cost
+        description: "Costo del servicio de envío."
       - name: address_id
         description: "Identificador único de la dirección."
         tests:
           - not_null
-      - name: id_created_at
+      - name: created_at
         description: "Fecha de creación del pedido."
         tests:
           - not_null
           - relationships:
               to: ref('fecha')
-              field: id_fecha_hora
+              field: date_day
       - name: promo_id
         description: "Clave subrogada generada utilizando la columna promo_id."
         tests:
@@ -114,7 +113,7 @@ models:
         tests:
           - relationships:
               to: ref('fecha')
-              field: id_fecha_hora
+              field: date_day
       - name: order_cost
         description: "Costo del pedido."
         tests:
@@ -127,12 +126,12 @@ models:
         description: "Total del pedido."
         tests:
           - not_null
-      - name: id_delivered_at_UTC
+      - name: delivered_at
         description: "Fecha de entrega del pedido en UTC."
         tests:
           - relationships:
               to: ref('fecha')
-              field: id_fecha_hora
+              field: date_day
       - name: tracking_id
         description: "Identificador de seguimiento del pedido."
       - name: status_id
@@ -205,7 +204,7 @@ models:
           - not_null
           - relationships:
               to: ref('fecha')
-              field: id_fecha_hora
+              field: date_day
       - name: _fivetran_deleted
         description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
       - name: _fivetran_synced
