@@ -1,0 +1,13 @@
+default:
+  outputs:
+    dev:
+      type: snowflake
+      account: civicapartner.west-europe.azure
+      user: alumno11
+      password: Real madrid 1
+      role: CURSO_DATA_ENGINEERING
+      database: ALUMNO11_DEV_SILVER_DB
+      warehouse: WH_CURSO_DATA_ENGINEERING
+      schema: ALUMNO11
+  target: dev
+

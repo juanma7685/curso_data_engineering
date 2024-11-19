@@ -37,3 +37,249 @@ models:
         description: "Marca la sincronización más reciente (campo generado por Fivetran)."
         tests:
           - not_null
+
+  - name: stg_sql_server_dbo__shipping_service
+    description: "Modelo que transforma los datos de la tabla Orders para obtener los servicios de envío."
+    columns:
+      - name: shipping_service_id
+        description: "Clave subrogada generada utilizando la columna shipping_service."
+        tests:
+          - unique
+          - not_null
+      - name: shipping_service
+        description: "Nombre del servicio de envío."
+        tests:
+          - not_null
+      - name: shipping_cost
+        description: "Costo del servicio de envío."
+        tests:
+          - not_null
+
+  - name: stg_sql_server_dbo__products
+    description: "Modelo que transforma los datos de la tabla Products."
+    columns:
+      - name: product_id
+        description: "Identificador único del producto."
+        tests:
+          - unique
+          - not_null
+      - name: precio
+        description: "Precio del producto."
+        tests:
+          - not_null
+      - name: nombre_producto
+        description: "Nombre del producto."
+        tests:
+          - not_null
+      - name: inventory
+        description: "Cantidad de productos en inventario."
+        tests:
+          - not_null
+      - name: _fivetran_deleted
+        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
+      - name: _fivetran_synced
+        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+        tests:
+          - not_null
+
+  - name: stg_sql_server_dbo__orders
+    description: "Modelo que transforma los datos de la tabla Orders."
+    columns:
+      - name: order_id
+        description: "Identificador único del pedido."
+        tests:
+          - unique
+          - not_null
+      - name: shipping_service_id
+        description: "Clave subrogada generada utilizando la columna shipping_service."
+        tests:
+          - not_null
+      - name: address_id
+        description: "Identificador único de la dirección."
+        tests:
+          - not_null
+      - name: created_at
+        description: "Fecha de creación del pedido."
+        tests:
+          - not_null
+      - name: promo_id
+        description: "Clave subrogada generada utilizando la columna promo_id."
+        tests:
+          - not_null
+      - name: estimated_delivery_at
+        description: "Fecha estimada de entrega del pedido."
+      - name: order_cost
+        description: "Costo del pedido."
+        tests:
+          - not_null
+      - name: user_id
+        description: "Identificador único del usuario."
+        tests:
+          - not_null
+      - name: order_total
+        description: "Total del pedido."
+        tests:
+          - not_null
+      - name: delivered_at_UTC
+        description: "Fecha de entrega del pedido en UTC."
+      - name: tracking_id
+        description: "Identificador de seguimiento del pedido."
+      - name: status_id
+        description: "Clave subrogada generada utilizando la columna status."
+        tests:
+          - not_null
+      - name: _fivetran_deleted
+        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
+      - name: _fivetran_synced
+        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+        tests:
+          - not_null
+
+  - name: stg_sql_server_dbo__order_items
+    description: "Modelo que transforma los datos de la tabla Order Items."
+    columns:
+      - name: order_items_id
+        description: "Clave subrogada generada utilizando las columnas order_id y product_id."
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Identificador único del pedido."
+        tests:
+          - not_null
+      - name: product_id
+        description: "Identificador único del producto."
+        tests:
+          - not_null
+      - name: quantity
+        description: "Cantidad de productos en el pedido."
+        tests:
+          - not_null
+      - name: _fivetran_deleted
+        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
+      - name: _fivetran_synced
+        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+        tests:
+          - not_null
+
+  - name: stg_sql_server_dbo__events
+    description: "Modelo que transforma los datos de la tabla Events."
+    columns:
+      - name: event_id
+        description: "Identificador único del evento."
+        tests:
+          - unique
+          - not_null
+      - name: page_url
+        description: "URL de la página donde ocurrió el evento."
+        tests:
+          - not_null
+      - name: event_type
+        description: "Tipo de evento."
+        tests:
+          - not_null
+      - name: user_id
+        description: "Identificador único del usuario."
+        tests:
+          - not_null
+      - name: product_id
+        description: "Identificador único del producto."
+      - name: session_id
+        description: "Identificador único de la sesión."
+        tests:
+          - not_null
+      - name: created_at
+        description: "Fecha de creación del evento."
+        tests:
+          - not_null
+      - name: _fivetran_deleted
+        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
+      - name: _fivetran_synced
+        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+        tests:
+          - not_null
+
+  - name: stg_sql_server_dbo__addresses
+    description: "Modelo que transforma los datos de la tabla Addresses."
+    columns:
+      - name: address_id
+        description: "Identificador único de la dirección."
+        tests:
+          - unique
+          - not_null
+      - name: zipcode
+        description: "Código postal de la dirección."
+        tests:
+          - not_null
+      - name: country
+        description: "País de la dirección."
+        tests:
+          - not_null
+      - name: address
+        description: "Dirección completa."
+        tests:
+          - not_null
+      - name: state
+        description: "Estado o provincia de la dirección."
+        tests:
+          - not_null
+      - name: _fivetran_deleted
+        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
+      - name: _fivetran_synced
+        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+        tests:
+          - not_null
+
+  - name: stg_sql_server_dbo__users
+    description: "Modelo que transforma los datos de la tabla Users."
+    columns:
+      - name: user_id
+        description: "Identificador único del usuario."
+        tests:
+          - unique
+          - not_null
+      - name: updated_at
+        description: "Fecha de última actualización del usuario."
+        tests:
+          - not_null
+      - name: address_id
+        description: "Identificador único de la dirección del usuario."
+        tests:
+          - not_null
+      - name: last_name
+        description: "Apellido del usuario."
+        tests:
+          - not_null
+      - name: created_at
+        description: "Fecha de creación del usuario."
+        tests:
+          - not_null
+      - name: phone_number
+        description: "Número de teléfono del usuario."
+      - name: first_name
+        description: "Nombre del usuario."
+        tests:
+          - not_null
+      - name: email
+        description: "Correo electrónico del usuario."
+        tests:
+          - not_null
+      - name: _fivetran_deleted
+        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
+      - name: _fivetran_synced
+        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+        tests:
+          - not_null
+
+  - name: stg_sql_server_dbo__status
+    description: "Modelo que transforma los datos de la tabla Orders para obtener los estados de los pedidos."
+    columns:
+      - name: status_id
+        description: "Clave subrogada generada utilizando la columna status."
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: "Estado del pedido."
+        tests:
+          - not_null

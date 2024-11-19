@@ -1,8 +1,8 @@
 WITH my_cte AS (
     {{ dbt_utils.date_spine(
         datepart="hour",
-        start_date="CAST('2019-01-01 00:00:00' AS TIMESTAMP)",
-        end_date="CAST('2020-01-01 00:00:00' AS TIMESTAMP)"
+        start_date="CAST('2021-01-01 00:00:00' AS TIMESTAMP)",
+        end_date="CAST('2026-01-01 00:00:00' AS TIMESTAMP)"
     ) }}
 )
 
