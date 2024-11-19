@@ -98,16 +98,23 @@ models:
         description: "Identificador único de la dirección."
         tests:
           - not_null
-      - name: created_at
+      - name: id_created_at
         description: "Fecha de creación del pedido."
         tests:
           - not_null
+          - relationships:
+              to: ref('fecha')
+              field: id_fecha_hora
       - name: promo_id
         description: "Clave subrogada generada utilizando la columna promo_id."
         tests:
           - not_null
-      - name: estimated_delivery_at
+      - name: id_estimated_delivery_at
         description: "Fecha estimada de entrega del pedido."
+        tests:
+          - relationships:
+              to: ref('fecha')
+              field: id_fecha_hora
       - name: order_cost
         description: "Costo del pedido."
         tests:
@@ -120,8 +127,12 @@ models:
         description: "Total del pedido."
         tests:
           - not_null
-      - name: delivered_at_UTC
+      - name: id_delivered_at_UTC
         description: "Fecha de entrega del pedido en UTC."
+        tests:
+          - relationships:
+              to: ref('fecha')
+              field: id_fecha_hora
       - name: tracking_id
         description: "Identificador de seguimiento del pedido."
       - name: status_id
@@ -188,10 +199,13 @@ models:
         description: "Identificador único de la sesión."
         tests:
           - not_null
-      - name: created_at
+      - name: id_created_at
         description: "Fecha de creación del evento."
         tests:
           - not_null
+          - relationships:
+              to: ref('fecha')
+              field: id_fecha_hora
       - name: _fivetran_deleted
         description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
       - name: _fivetran_synced
@@ -238,10 +252,13 @@ models:
         tests:
           - unique
           - not_null
-      - name: updated_at
+      - name: id_updated_at
         description: "Fecha de última actualización del usuario."
         tests:
           - not_null
+          - relationships:
+              to: ref('fecha')
+              field: id_fecha_hora
       - name: address_id
         description: "Identificador único de la dirección del usuario."
         tests:
@@ -250,10 +267,13 @@ models:
         description: "Apellido del usuario."
         tests:
           - not_null
-      - name: created_at
+      - name: id_created_at
         description: "Fecha de creación del usuario."
         tests:
           - not_null
+          - relationships:
+              to: ref('fecha')
+              field: id_fecha_hora
       - name: phone_number
         description: "Número de teléfono del usuario."
       - name: first_name
