@@ -9,8 +9,8 @@ WITH my_cte AS (
 SELECT 
     date_hour,
     CAST(date_hour AS DATE) AS date, -- Nueva columna para la fecha sin la hora
-    {{ dbt_utils.surrogate_key(['date_hour']) }} AS id_fecha_hora, -- Clave subrrogada con fecha y hora
-    {{ dbt_utils.surrogate_key(['CAST(date_hour AS DATE)']) }} AS id_fecha, -- Clave subrrogada sin la hora
+    {{ dbt_utils.generate_surrogate_key(['date_hour']) }} AS id_fecha_hora, -- Clave subrrogada con fecha y hora
+    {{ dbt_utils.generate_surrogate_key(['CAST(date_hour AS DATE)']) }} AS id_fecha, -- Clave subrrogada sin la hora
     EXTRACT(YEAR FROM date_hour) AS year,
     EXTRACT(MONTH FROM date_hour) AS month,
     EXTRACT(DAY FROM date_hour) AS day,
