@@ -1,4 +1,3 @@
-
 with 
 
 source as (
@@ -15,7 +14,6 @@ renamed as (
         session_id,
         created_at
     from source
-    where _fivetran_deleted = false
 )
 
 select * from renamed

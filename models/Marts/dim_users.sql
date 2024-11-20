@@ -16,7 +16,6 @@ renamed as (
         first_name,
         email
     from source
-    where _fivetran_deleted = false
 )
 
 select * from renamed
