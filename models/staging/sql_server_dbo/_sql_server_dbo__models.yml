@@ -15,8 +15,8 @@ models:
         tests:
           - not_null
 
-      - name: discount_percentage
-        description: "Porcentaje del descuento aplicado a la promoción."
+      - name: EUR_discount
+        description: "Euros de descuento aplicado a la promoción."
         tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_between:
@@ -31,7 +31,7 @@ models:
               value_set: ["active", "inactive"]
 
       - name: _fivetran_deleted
-        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
+        description: "Indica si la fila fue eliada (campo generado por Fivetran)."
 
       - name: _fivetran_synced
         description: "Marca la sincronización más reciente (campo generado por Fivetran)."
@@ -87,16 +87,8 @@ models:
         tests:
           - unique
           - not_null
-      - name: shipping_service_id
-        description: "Clave subrogada generada utilizando la columna shipping_service."
-        tests:
-          - not_null
       - name: shipping_cost
         description: "Costo del servicio de envío."
-      - name: address_id
-        description: "Identificador único de la dirección."
-        tests:
-          - not_null
       - name: created_at
         description: "Fecha de creación del pedido."
         tests:
@@ -104,10 +96,6 @@ models:
           - relationships:
               to: ref('fecha')
               field: date_day
-      - name: promo_id
-        description: "Clave subrogada generada utilizando la columna promo_id."
-        tests:
-          - not_null
       - name: estimated_delivery_at
         description: "Fecha estimada de entrega del pedido."
         tests:
@@ -116,10 +104,6 @@ models:
               field: date_day
       - name: order_cost
         description: "Costo del pedido."
-        tests:
-          - not_null
-      - name: user_id
-        description: "Identificador único del usuario."
         tests:
           - not_null
       - name: order_total
@@ -134,14 +118,39 @@ models:
               field: date_day
       - name: tracking_id
         description: "Identificador de seguimiento del pedido."
-      - name: status_id
-        description: "Clave subrogada generada utilizando la columna status."
-        tests:
-          - not_null
       - name: _fivetran_deleted
         description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
       - name: _fivetran_synced
         description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+        tests:
+          - not_null
+
+  - name: stg_sql_server_dbo__orders_facts
+    description: "Modelo que transforma los datos de la tabla Orders para obtener los hechos de los pedidos."
+    columns:
+      - name: order_id
+        description: "Identificador único del pedido."
+        tests:
+          - unique
+          - not_null
+      - name: address_id
+        description: "Identificador único de la dirección."
+        tests:
+          - not_null
+      - name: user_id
+        description: "Identificador único del usuario."
+        tests:
+          - not_null
+      - name: shipping_service_id
+        description: "Clave subrogada generada utilizando la columna shipping_service."
+        tests:
+          - not_null
+      - name: promo_id
+        description: "Clave subrogada generada utilizando la columna promo_id."
+        tests:
+          - not_null
+      - name: status_id
+        description: "Clave subrogada generada utilizando la columna status."
         tests:
           - not_null
 
@@ -162,7 +171,7 @@ models:
         tests:
           - not_null
       - name: quantity
-        description: "Cantidad de productos en el pedido."
+        description: "Cantidad de ese producto en el en esa order item."
         tests:
           - not_null
       - name: _fivetran_deleted
