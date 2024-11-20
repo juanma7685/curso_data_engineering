@@ -26,7 +26,7 @@ pedidos_facts AS (
     SELECT
         orders_facts.order_id,
         orders_facts.promo_id
-    FROM {{ ref('stg_sql_server_dbo__orders_facts') }} orders_facts
+    FROM {{ ref('stg_sql_server_dbo__orders') }} orders_facts
 ),
 
 facturacion_producto AS (
