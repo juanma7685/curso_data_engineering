@@ -10,10 +10,10 @@ renamed as (
 
     select
         user_id,
-        {{ dbt_utils.generate_surrogate_key(['updated_at']) }} as id_updated_at,
+        CAST(updated_at AS DATE) as updated_at,
         address_id,
         last_name,
-        {{ dbt_utils.generate_surrogate_key(['created_at']) }} as id_created_at,
+        CAST(created_at AS DATE) as created_at,
         phone_number,
         first_name,
         email,
