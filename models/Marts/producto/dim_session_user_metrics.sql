@@ -1,4 +1,3 @@
-
 WITH session_data AS (
     SELECT
         session_id,
@@ -40,15 +39,24 @@ package_shipped_events AS (
     FROM {{ ref('dim_events') }}
     WHERE event_type = 'package_shipped'
     GROUP BY session_id
+),
+user_data AS (
+    SELECT
+        user_id,
+        first_name,
+        last_name,
+        email,
+        phone_number
+    FROM {{ ref('dim_users') }}
 )
 
 SELECT
     sd.session_id,
     sd.user_id,
-    sd.first_name,
-    sd.last_name,
-    sd.email,
-    sd.phone_number,
+    ud.first_name,
+    ud.last_name,
+    ud.email,
+    ud.phone_number,
     sd.session_start,
     sd.session_end,
     sd.session_duration,
@@ -61,3 +69,4 @@ LEFT JOIN page_views pv ON sd.session_id = pv.session_id
 LEFT JOIN add_to_cart_events atc ON sd.session_id = atc.session_id
 LEFT JOIN checkout_events co ON sd.session_id = co.session_id
 LEFT JOIN package_shipped_events ps ON sd.session_id = ps.session_id
+LEFT JOIN user_data ud ON sd.user_id = ud.user_id
