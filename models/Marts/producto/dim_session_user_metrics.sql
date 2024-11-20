@@ -45,6 +45,10 @@ package_shipped_events AS (
 SELECT
     sd.session_id,
     sd.user_id,
+    sd.first_name,
+    sd.last_name,
+    sd.email,
+    sd.phone_number,
     sd.session_start,
     sd.session_end,
     sd.session_duration,
