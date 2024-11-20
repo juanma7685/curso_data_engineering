@@ -108,7 +108,7 @@ models:
         description: "Clave subrogada generada utilizando la columna promo_id."
         tests:
           - not_null
-      - name: id_estimated_delivery_at
+      - name: estimated_delivery_at
         description: "Fecha estimada de entrega del pedido."
         tests:
           - relationships:
@@ -198,7 +198,7 @@ models:
         description: "Identificador único de la sesión."
         tests:
           - not_null
-      - name: id_created_at
+      - name: created_at
         description: "Fecha de creación del evento."
         tests:
           - not_null
@@ -251,13 +251,13 @@ models:
         tests:
           - unique
           - not_null
-      - name: id_updated_at
+      - name: updated_at
         description: "Fecha de última actualización del usuario."
         tests:
           - not_null
           - relationships:
               to: ref('fecha')
-              field: id_fecha_hora
+              field: date_day
       - name: address_id
         description: "Identificador único de la dirección del usuario."
         tests:
@@ -266,13 +266,13 @@ models:
         description: "Apellido del usuario."
         tests:
           - not_null
-      - name: id_created_at
+      - name: created_at
         description: "Fecha de creación del usuario."
         tests:
           - not_null
           - relationships:
               to: ref('fecha')
-              field: id_fecha_hora
+              field: date_day
       - name: phone_number
         description: "Número de teléfono del usuario."
       - name: first_name
