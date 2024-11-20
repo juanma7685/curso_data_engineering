@@ -8,7 +8,7 @@ with
         select
             {{ dbt_utils.generate_surrogate_key(["promo_id"]) }} as promo_id,
             promo_id as name,
-            discount as discount_percentage,
+            discount as EUR_discount,
             status,
             _fivetran_deleted,
             _fivetran_synced

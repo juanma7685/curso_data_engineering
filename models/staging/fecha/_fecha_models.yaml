@@ -4,18 +4,14 @@ models:
   - name: fecha
     description: "Modelo de fecha para análisis de series temporales"
     columns:
-      - name: date
+      - name: date_day
         description: "La fecha sin la hora"
-      - name: date_hour
-        description: "La fecha y hora"
       - name: year
         description: "El año de la fecha"
       - name: month
         description: "El mes de la fecha"
       - name: day
         description: "El día de la fecha"
-      - name: hour
-        description: "La hora de la fecha"
       - name: week
         description: "La semana del año de la fecha"
       - name: day_of_week
@@ -26,7 +22,3 @@ models:
         description: "El trimestre de la fecha"
       - name: day_type
         description: "Tipo de día (Weekend o Weekday)"
-      - name: id_fecha_hora
-        description: "Clave subrrogada con fecha y hora"
-      - name: id_fecha
-        description: "Clave subrrogada sin la hora"
