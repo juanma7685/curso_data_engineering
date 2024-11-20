@@ -22,7 +22,7 @@ union all
 select
     promo_id,
     name,
-    discount_percentage as EUR_discount,
+    EUR_discount,
     status
 from {{ ref('stg_sql_server_dbo__promos') }}
 where name = 'No Promo'
