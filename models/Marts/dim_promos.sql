@@ -1,4 +1,3 @@
-
 with 
 
 source as (
@@ -12,7 +11,6 @@ renamed as (
         EUR_discount,
         status
     from source
-    where _fivetran_deleted = false
 )
 
 select * from renamed

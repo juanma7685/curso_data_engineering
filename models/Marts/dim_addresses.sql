@@ -1,4 +1,3 @@
-
 with 
 
 source as (
@@ -13,7 +12,6 @@ renamed as (
         address,
         state
     from source
-    where _fivetran_deleted = false
 )
 
 select * from renamed
