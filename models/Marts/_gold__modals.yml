@@ -1,0 +1,150 @@
+version: 2
+
+models:
+  - name: facts_orders
+    description: "Hechos de órdenes"
+    columns:
+      - name: order_id
+        description: "ID de la orden"
+      - name: address_id
+        description: "ID de la dirección"
+      - name: user_id
+        description: "ID del usuario"
+      - name: shipping_service_id
+        description: "ID del servicio de envío"
+      - name: promo_id
+        description: "ID de la promoción"
+      - name: status_id
+        description: "ID del estado"
+
+  - name: facts_order_items
+    description: "Hechos de artículos de órdenes"
+    columns:
+      - name: order_items_id
+        description: "ID de los artículos de la orden"
+      - name: order_id
+        description: "ID de la orden"
+      - name: product_id
+        description: "ID del producto"
+      - name: quantity
+        description: "Cantidad"
+      - name: _fivetran_deleted
+        description: "Eliminado por Fivetran"
+      - name: _fivetran_synced
+        description: "Sincronizado por Fivetran"
+
+  - name: dim_users
+    description: "Dimensión de usuarios"
+    columns:
+      - name: user_id
+        description: "ID del usuario"
+      - name: updated_at
+        description: "Fecha de actualización"
+      - name: address_id
+        description: "ID de la dirección"
+      - name: last_name
+        description: "Apellido"
+      - name: created_at
+        description: "Fecha de creación"
+      - name: phone_number
+        description: "Número de teléfono"
+      - name: first_name
+        description: "Nombre"
+      - name: email
+        description: "Correo electrónico"
+
+  - name: dim_status
+    description: "Dimensión de estados"
+    columns:
+      - name: status_id
+        description: "ID del estado"
+      - name: status
+        description: "Estado"
+
+  - name: dim_shipping_service
+    description: "Dimensión de servicios de envío"
+    columns:
+      - name: shipping_service_id
+        description: "ID del servicio de envío"
+      - name: shipping_service
+        description: "Servicio de envío"
+
+  - name: dim_promos
+    description: "Dimensión de promociones"
+    columns:
+      - name: promo_id
+        description: "ID de la promoción"
+      - name: name
+        description: "Nombre"
+      - name: EUR_discount
+        description: "Descuento en EUR"
+      - name: status
+        description: "Estado"
+
+  - name: dim_products
+    description: "Dimensión de productos"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: precio
+        description: "Precio"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: inventory
+        description: "Inventario"
+
+  - name: dim_orders
+    description: "Dimensión de órdenes"
+    columns:
+      - name: order_id
+        description: "ID de la orden"
+      - name: shipping_cost
+        description: "Costo de envío"
+      - name: created_at
+        description: "Fecha de creación"
+      - name: estimated_delivery_at
+        description: "Fecha estimada de entrega"
+      - name: order_cost
+        description: "Costo de la orden"
+      - name: order_total
+        description: "Total de la orden"
+      - name: delivered_at
+        description: "Fecha de entrega"
+      - name: tracking_id
+        description: "ID de seguimiento"
+      - name: _fivetran_deleted
+        description: "Eliminado por Fivetran"
+      - name: _fivetran_synced
+        description: "Sincronizado por Fivetran"
+
+  - name: dim_events
+    description: "Dimensión de eventos"
+    columns:
+      - name: event_id
+        description: "ID del evento"
+      - name: page_url
+        description: "URL de la página"
+      - name: event_type
+        description: "Tipo de evento"
+      - name: user_id
+        description: "ID del usuario"
+      - name: product_id
+        description: "ID del producto"
+      - name: session_id
+        description: "ID de la sesión"
+      - name: created_at
+        description: "Fecha de creación"
+
+  - name: dim_addresses
+    description: "Dimensión de direcciones"
+    columns:
+      - name: address_id
+        description: "ID de la dirección"
+      - name: zipcode
+        description: "Código postal"
+      - name: country
+        description: "País"
+      - name: address
+        description: "Dirección"
+      - name: state
+        description: "Estado"
