@@ -87,6 +87,14 @@ models:
         tests:
           - unique
           - not_null
+      - name: address_id
+        description: "Identificador único de la dirección."
+        tests:
+          - not_null
+      - name: user_id
+        description: "Identificador único del usuario."
+        tests:
+          - not_null
       - name: shipping_cost
         description: "Costo del servicio de envío."
       - name: created_at
@@ -118,29 +126,6 @@ models:
               field: date_day
       - name: tracking_id
         description: "Identificador de seguimiento del pedido."
-      - name: _fivetran_deleted
-        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
-      - name: _fivetran_synced
-        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
-        tests:
-          - not_null
-
-  - name: stg_sql_server_dbo__orders_facts
-    description: "Modelo que transforma los datos de la tabla Orders para obtener los hechos de los pedidos."
-    columns:
-      - name: order_id
-        description: "Identificador único del pedido."
-        tests:
-          - unique
-          - not_null
-      - name: address_id
-        description: "Identificador único de la dirección."
-        tests:
-          - not_null
-      - name: user_id
-        description: "Identificador único del usuario."
-        tests:
-          - not_null
       - name: shipping_service_id
         description: "Clave subrogada generada utilizando la columna shipping_service."
         tests:
@@ -151,6 +136,12 @@ models:
           - not_null
       - name: status_id
         description: "Clave subrogada generada utilizando la columna status."
+        tests:
+          - not_null
+      - name: _fivetran_deleted
+        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
+      - name: _fivetran_synced
+        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
         tests:
           - not_null
 
