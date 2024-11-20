@@ -22,7 +22,7 @@ pedidos AS (
 
 facturacion_dia AS (
     SELECT
-        f.day_of_week AS day_name,
+        f.day_name AS day_name,
         SUM(ip.quantity * pr.precio) AS ingresos_totales
     FROM items_pedido ip
     INNER JOIN productos pr
@@ -31,7 +31,7 @@ facturacion_dia AS (
         ON ip.order_id = p.order_id
     INNER JOIN {{ ref('fecha') }} f
         ON p.created_at = f.date_day
-    GROUP BY f.day_of_week
+    GROUP BY f.day_name
 )
 
 SELECT
