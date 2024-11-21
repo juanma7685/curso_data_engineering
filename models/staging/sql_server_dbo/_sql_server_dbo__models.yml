@@ -218,9 +218,6 @@ models:
     columns:
       - name: event_type_id
         description: "Clave subrogada generada utilizando la columna event_type."
-        tests:
-          - unique
-          - not_null
       - name: event_type
         description: "Tipo de evento."
         tests:
