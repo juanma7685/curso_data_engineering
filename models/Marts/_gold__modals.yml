@@ -117,7 +117,7 @@ models:
       - name: _fivetran_synced
         description: "Sincronizado por Fivetran"
 
-  - name: dim_events
+  - name: facts_events
     description: "Dimensión de eventos"
     columns:
       - name: event_id
