@@ -3,7 +3,7 @@ WITH items_pedido AS (
         oi.product_id,
         oi.quantity,
         oi.order_id
-    FROM {{ ref('stg_sql_server_dbo__order_items') }} oi
+    FROM {{ ref('facts_order_items') }} oi
 ),
 
 productos AS (
@@ -11,7 +11,7 @@ productos AS (
         pr.product_id,
         pr.nombre_producto,
         pr.precio
-    FROM {{ ref('stg_sql_server_dbo__products') }} pr
+    FROM {{ ref('dim_products') }} pr
 ),
 
 promociones AS (
@@ -19,14 +19,14 @@ promociones AS (
         p.promo_id,
         p.EUR_discount AS descuento_euros,
         p.status
-    FROM {{ ref('stg_sql_server_dbo__promos') }} p
+    FROM {{ ref('dim_promos') }} p
 ),
 
 pedidos_facts AS (
     SELECT
         orders_facts.order_id,
         orders_facts.promo_id
-    FROM {{ ref('stg_sql_server_dbo__orders') }} orders_facts
+    FROM {{ ref('facts_orders') }} orders_facts
 ),
 
 facturacion_producto AS (
