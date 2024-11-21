@@ -42,5 +42,5 @@ models:
       +materialized: table
 
 seeds:
-  +database: "{{ env_var('DBT_ENVIOREMENT') }}_BRONZEDB"
+  +database: "{{ env_var('DBT_ENVIOREMENT') }}_BRONZE_DB"
   +schema: "SEEDS"
