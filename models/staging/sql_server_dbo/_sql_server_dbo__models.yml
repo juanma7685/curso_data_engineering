@@ -184,9 +184,10 @@ models:
         description: "URL de la página donde ocurrió el evento."
         tests:
           - not_null
-      - name: event_type
-        description: "Tipo de evento."
+      - name: event_type_id
+        description: "Clave subrogada generada utilizando la columna event_type."
         tests:
+          - unique
           - not_null
       - name: user_id
         description: "Identificador único del usuario."
@@ -209,6 +210,19 @@ models:
         description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
       - name: _fivetran_synced
         description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+        tests:
+          - not_null
+
+  - name: stg_sql_server_dbo__event_type
+    description: "Modelo que transforma los datos de la tabla Events para obtener los tipos de eventos."
+    columns:
+      - name: event_type_id
+        description: "Clave subrogada generada utilizando la columna event_type."
+        tests:
+          - unique
+          - not_null
+      - name: event_type
+        description: "Tipo de evento."
         tests:
           - not_null
 

@@ -4,7 +4,7 @@ sources:
   - name: sql_server_dbo
     schema: sql_server_dbo
     description: ""
-    database: alumno11_dev_bronze_db
+    database: "{{ env_var('DBT_ENVIOREMENT') }}_BRONZEDB"
     tables:
       - name: addresses
         description: ""

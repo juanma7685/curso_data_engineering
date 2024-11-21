@@ -4,7 +4,7 @@ sources:
   - name: google_sheets
     schema: google_sheets
     description: ""
-    database: alumno11_dev_bronze_db 
+    database: "{{ env_var('DBT_ENVIOREMENT') }}_BRONZEDB"
 
     tables:
       - name: budget
