@@ -124,8 +124,8 @@ models:
         description: "ID del evento"
       - name: page_url
         description: "URL de la página"
-      - name: event_type
-        description: "Tipo de evento"
+      - name: event_type_id
+        description: "ID del tipo de evento"
       - name: user_id
         description: "ID del usuario"
       - name: product_id
@@ -134,6 +134,14 @@ models:
         description: "ID de la sesión"
       - name: created_at
         description: "Fecha de creación"
+
+  - name: dim_event_type
+    description: "Dimensión de tipos de eventos"
+    columns:
+      - name: event_type_id
+        description: "ID del tipo de evento"
+      - name: event_type
+        description: "Tipo de evento"
 
   - name: dim_addresses
     description: "Dimensión de direcciones"

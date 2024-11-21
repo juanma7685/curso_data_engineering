@@ -42,5 +42,5 @@ models:
       +materialized: table
 
 seeds:
-  +database: "ALUMNO11_DEV_BRONZE_DB"
+  +database: "{{ env_var('DBT_ENVIOREMENT') }}_BRONZEDB"
   +schema: "SEEDS"
