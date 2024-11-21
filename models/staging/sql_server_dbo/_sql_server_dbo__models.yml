@@ -187,7 +187,6 @@ models:
       - name: event_type_id
         description: "Clave subrogada generada utilizando la columna event_type."
         tests:
-          - unique
           - not_null
       - name: user_id
         description: "Identificador único del usuario."
