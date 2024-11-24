@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: facturacion_total_productos
+    description: "Modelo para calcular la facturación total de cada producto"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: total_billing
+        description: "Facturación total del producto"
+  - name: facturacion_total_productos_con_desc
+    description: "Modelo para calcular la facturación total de cada producto con descuento aplicado"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: total_billing_with_discount
+        description: "Facturación total del producto con descuento aplicado"
+  - name: dim_facturacion_total_productos
+    description: "Modelo para calcular la facturación total de cada producto con descuento aplicado"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: total_billing
+        description: "Facturación total del producto"
+      - name: total_discount
+        description: "Descuento total aplicado al producto"
+      - name: total_billing_after_discount
+        description: "Facturación total del producto después de aplicar el descuento"

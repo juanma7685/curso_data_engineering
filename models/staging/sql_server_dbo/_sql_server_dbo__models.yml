@@ -246,6 +246,14 @@ models:
         description: "Estado o provincia de la dirección."
         tests:
           - not_null
+      - name: address_number
+        description: "Número de la dirección."
+        tests:
+          - not_null
+      - name: street
+        description: "Nombre de la calle."
+        tests:
+          - not_null
       - name: _fivetran_deleted
         description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
       - name: _fivetran_synced

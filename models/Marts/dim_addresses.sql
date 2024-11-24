@@ -10,6 +10,8 @@ renamed as (
         zipcode,
         country,
         address,
+        street,
+        address_number,
         state
     from source
 )
