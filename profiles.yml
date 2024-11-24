@@ -8,6 +8,5 @@ default:
       role: CURSO_DATA_ENGINEERING
       database: ALUMNO11_DEV_SILVER_DB
       warehouse: WH_CURSO_DATA_ENGINEERING
-      schema: ALUMNO11
   target: dev
 
