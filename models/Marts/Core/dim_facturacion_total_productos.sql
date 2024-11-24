@@ -22,9 +22,11 @@ promo_distributions AS (
     ON
         foi.order_id = fo.order_id
     JOIN
-        {{ ref('dim_promos') }} dpr
+        {{ ref('dim_orders') }} dpr
     ON
-        fo.promo_id = dpr.promo_id
+        fo.order_id = dpr.order_id
+    WHERE
+        dpr.EUR_discount IS NOT NULL
 ),
 f_discounts AS (
     SELECT

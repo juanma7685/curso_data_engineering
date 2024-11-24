@@ -1,0 +1,127 @@
+Table facts_orders {
+  order_id int [pk, not null]
+  address_id int
+  user_id int
+  shipping_service_id int
+  promo_id int
+  status_id int
+}
+
+Table facts_order_items {
+  order_items_id int [pk, not null]
+  order_id int
+  product_id int
+  quantity int
+  _fivetran_deleted boolean
+  _fivetran_synced timestamp
+}
+
+Table dim_users {
+  user_id int [pk, not null]
+  updated_at timestamp
+  address_id int
+  last_name varchar
+  created_at timestamp
+  phone_number varchar
+  first_name varchar
+  email varchar
+}
+
+Table dim_status {
+  status_id int [pk, not null]
+  status varchar
+}
+
+Table dim_shipping_service {
+  shipping_service_id int [pk, not null]
+  shipping_service varchar
+}
+
+Table dim_promos {
+  promo_id int [pk, not null]
+  name varchar
+  EUR_discount float
+  status varchar
+}
+
+Table dim_products {
+  product_id int [pk, not null]
+  precio float
+  nombre_producto varchar
+  inventory int
+}
+
+Table dim_orders {
+  order_id int [pk, not null]
+  shipping_cost float
+  created_at timestamp
+  estimated_delivery_at timestamp
+  order_cost float
+  order_total float
+  delivered_at timestamp
+  tracking_id varchar
+  _fivetran_deleted boolean
+  _fivetran_synced timestamp
+}
+
+Table facts_events {
+  event_id int [pk, not null]
+  page_url varchar
+  event_type_id int
+  user_id int
+  product_id int
+  session_id int
+  created_at timestamp
+}
+
+Table dim_event_type {
+  event_type_id int [pk, not null]
+  event_type varchar
+}
+
+Table dim_addresses {
+  address_id int [pk, not null]
+  zipcode varchar
+  country varchar
+  address varchar
+  street varchar
+  address_number varchar
+  state varchar
+}
+
+Table dim_budget {
+  budget_id int [pk, not null]
+  product_id int
+  quantity int
+  mes int
+  nombre_mes varchar
+  anyo int
+}
+
+Table dim_fecha {
+  date_day date [pk, not null]
+  year int
+  month int
+  day int
+  week int
+  day_of_week int
+  day_of_year int
+  quarter int
+  day_type varchar
+  day_name varchar
+}
+
+Ref: facts_orders.address_id > dim_addresses.address_id
+Ref: facts_orders.user_id > dim_users.user_id
+Ref: facts_orders.shipping_service_id > dim_shipping_service.shipping_service_id
+Ref: facts_orders.promo_id > dim_promos.promo_id
+Ref: facts_orders.status_id > dim_status.status_id
+
+Ref: facts_order_items.order_id > facts_orders.order_id
+Ref: facts_order_items.product_id > dim_products.product_id
+
+Ref: facts_events.user_id > dim_users.user_id
+Ref: facts_events.product_id > dim_products.product_id
+Ref: facts_events.event_type_id > dim_event_type.event_type_id
+
+Ref: dim_budget.product_id > dim_products.product_id
