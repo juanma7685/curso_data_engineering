@@ -7,7 +7,7 @@ dim_orders as (
         shipping_cost,
         created_at,
         estimated_delivery_at,
-        p.name,
+        p.name as nombre_promocion,
         EUR_discount,
         p.status as promo_estado,
         st.status as order_status,

@@ -1,7 +1,3 @@
-{{ config(
-    materialized='view'
-) }}
-
 WITH user_data AS (
     SELECT 
         u.user_id,
