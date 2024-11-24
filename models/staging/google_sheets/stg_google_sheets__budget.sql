@@ -9,7 +9,7 @@ with
             product_id,
             quantity::int as quantity,
             Month(month) as mes,
-            to_char(month, 'Month') as nombre_mes
+            Year(month) as anyo
 
         from source
 

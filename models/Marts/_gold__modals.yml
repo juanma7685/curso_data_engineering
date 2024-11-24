@@ -154,6 +154,10 @@ models:
         description: "País"
       - name: address
         description: "Dirección"
+      - name: street
+        description: "Calle"
+      - name: address_number
+        description: "Número de calle"
       - name: state
         description: "Estado"
 
@@ -170,6 +174,8 @@ models:
         description: "Mes correspondiente al presupuesto."
       - name: nombre_mes
         description: "Nombre completo del mes en formato texto."
+      - name: anyo
+        description: "Año correspondiente al presupuesto."
 
   - name: dim_fecha
     description: "Dimensión de fecha para análisis de series temporales"

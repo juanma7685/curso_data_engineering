@@ -11,7 +11,7 @@ renamed as (
         product_id,
         quantity,
         mes,
-        nombre_mes
+        anyo
     from source
 )
 
