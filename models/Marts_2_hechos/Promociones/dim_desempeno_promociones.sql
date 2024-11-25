@@ -5,9 +5,9 @@ WITH desempeno_promociones AS (
             do.nombre_promocion,
             do.EUR_discount
         FROM
-            {{ ref('H2_facts_orders') }} foi
+            {{ ref('facts_orders') }} foi
         JOIN
-            {{ ref('H2_dim_orders') }} do
+            {{ ref('dim_orders') }} do
         ON
             foi.order_id = do.order_id
         GROUP BY
@@ -22,7 +22,7 @@ WITH desempeno_promociones AS (
     FROM
         descuentos_unicos du
     JOIN
-        {{ ref('H2_dim_orders') }} do
+        {{ ref('dim_orders') }} do
     ON
         du.order_id = do.order_id
     GROUP BY

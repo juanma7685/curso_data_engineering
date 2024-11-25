@@ -4,7 +4,7 @@ WITH estado_inventario AS (
             foi.product_id,
             SUM(foi.quantity) AS ventas_totales
         FROM
-            {{ ref('H2_facts_orders') }} foi
+            {{ ref('facts_orders') }} foi
         GROUP BY
             foi.product_id
     )
@@ -16,7 +16,7 @@ WITH estado_inventario AS (
         COALESCE(dp.inventory, 0) - COALESCE(vp.ventas_totales, 0) AS inventario_disponible,
         COALESCE(vp.ventas_totales, 0) / NULLIF(COALESCE(dp.inventory, 0), 0) AS ratio_ventas_vs_stock
     FROM
-        {{ ref('H2_dim_products') }} dp
+        {{ ref('dim_products') }} dp
     LEFT JOIN
         ventas_por_producto vp
     ON

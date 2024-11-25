@@ -5,9 +5,9 @@ WITH shipping_efficiency AS (
             do.shipping_service,
             do.shipping_cost
         FROM
-            {{ ref('H2_facts_orders') }} foi
+            {{ ref('facts_orders') }} foi
         JOIN
-            {{ ref('H2_dim_orders') }} do
+            {{ ref('dim_orders') }} do
         ON
             foi.order_id = do.order_id
         GROUP BY
@@ -22,7 +22,7 @@ WITH shipping_efficiency AS (
     FROM
         unique_shipping_costs usc
     JOIN
-        {{ ref('H2_dim_orders') }} do
+        {{ ref('dim_orders') }} do
     ON
         usc.order_id = do.order_id
     GROUP BY

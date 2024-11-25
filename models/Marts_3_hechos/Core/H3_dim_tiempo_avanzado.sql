@@ -5,9 +5,9 @@ WITH ventas_por_tiempo AS (
         df.date_day,
         do.order_total
     FROM
-        {{ ref('H2_dim_fecha') }} df
+        {{ ref('H3_dim_fecha') }} df
     LEFT JOIN
-        {{ ref('H2_dim_orders') }} do
+        {{ ref('H3_dim_orders') }} do
     ON
         df.date_day = do.created_at
 ),

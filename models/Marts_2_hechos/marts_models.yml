@@ -1,8 +1,7 @@
-
 version: 2
 
 models:
-  - name: H2_facts_orders
+  - name: facts_orders
     description: "Tabla de hechos de órdenes"
     columns:
       - name: order_id
@@ -22,7 +21,7 @@ models:
       - name: _fivetran_synced
         description: "Sincronizado por Fivetran"
 
-  - name: H2_facts_events
+  - name: facts_events
     description: "Tabla de hechos de eventos"
     columns:
       - name: event_id
@@ -40,7 +39,7 @@ models:
       - name: created_at
         description: "Fecha de creación"
 
-  - name: H2_dim_users
+  - name: dim_users
     description: "Tabla de dimensión de usuarios"
     columns:
       - name: user_id
@@ -60,7 +59,7 @@ models:
       - name: email
         description: "Correo electrónico"
 
-  - name: H2_dim_products
+  - name: dim_products
     description: "Tabla de dimensión de productos"
     columns:
       - name: product_id
@@ -72,7 +71,7 @@ models:
       - name: inventory
         description: "Inventario"
 
-  - name: H2_dim_orders
+  - name: dim_orders
     description: "Tabla de dimensión de órdenes"
     columns:
       - name: order_id
@@ -106,7 +105,7 @@ models:
       - name: _fivetran_synced
         description: "Sincronizado por Fivetran"
 
-  - name: H2_dim_fecha
+  - name: dim_fecha
     description: "Tabla de dimensión de fechas"
     columns:
       - name: date_day
@@ -130,7 +129,7 @@ models:
       - name: day_name
         description: "Nombre del día"
 
-  - name: H2_dim_budget
+  - name: dim_budget
     description: "Tabla de dimensión de presupuesto"
     columns:
       - name: budget_id
@@ -144,7 +143,7 @@ models:
       - name: anyo
         description: "Año"
 
-  - name: H2_dim_addresses
+  - name: dim_addresses
     description: "Tabla de dimensión de direcciones"
     columns:
       - name: address_id
