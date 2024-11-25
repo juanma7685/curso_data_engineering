@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: facts_orders
+  - name: H3_facts_orders
     description: "Tabla de hechos para pedidos"
     columns:
       - name: order_id
@@ -11,7 +11,7 @@ models:
       - name: user_id
         description: "Identificador del usuario"
 
-  - name: facts_order_items
+  - name: H3_facts_order_items
     description: "Tabla de hechos para artículos de pedidos"
     columns:
       - name: order_items_id
@@ -27,7 +27,7 @@ models:
       - name: _fivetran_synced
         description: "Marca de tiempo de la última sincronización"
 
-  - name: facts_events
+  - name: H3_facts_events
     description: "Tabla de hechos para eventos"
     columns:
       - name: event_id
@@ -45,7 +45,7 @@ models:
       - name: created_at
         description: "Marca de tiempo de cuando se creó el evento"
 
-  - name: dim_users
+  - name: H3_dim_users
     description: "Tabla de dimensión para usuarios"
     columns:
       - name: user_id
@@ -65,7 +65,7 @@ models:
       - name: email
         description: "Correo electrónico del usuario"
 
-  - name: dim_products
+  - name: H3_dim_products
     description: "Tabla de dimensión para productos"
     columns:
       - name: product_id
@@ -77,7 +77,7 @@ models:
       - name: inventory
         description: "Inventario del producto"
 
-  - name: dim_orders
+  - name: H3_dim_orders
     description: "Tabla de dimensión para pedidos"
     columns:
       - name: order_id
@@ -111,7 +111,7 @@ models:
       - name: o._fivetran_synced
         description: "Marca de tiempo de la última sincronización"
 
-  - name: dim_fecha
+  - name: H3_dim_fecha
     description: "Tabla de dimensión para fechas"
     columns:
       - name: date_day
@@ -135,7 +135,7 @@ models:
       - name: day_name
         description: "Nombre del día"
 
-  - name: dim_budget
+  - name: H3_dim_budget
     description: "Tabla de dimensión para presupuesto"
     columns:
       - name: budget_id
@@ -149,7 +149,7 @@ models:
       - name: anyo
         description: "Año del presupuesto"
 
-  - name: dim_addresses
+  - name: H3_dim_addresses
     description: "Tabla de dimensión para direcciones"
     columns:
       - name: address_id

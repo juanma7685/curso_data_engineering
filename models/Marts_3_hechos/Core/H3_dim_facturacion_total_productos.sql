@@ -3,9 +3,9 @@ WITH f_order_items AS (
         foi.product_id,
         SUM(foi.quantity * dp.precio) AS total_billing
     FROM
-        {{ ref('facts_order_items') }} foi
+        {{ ref('H3_facts_order_items') }} foi
     JOIN
-        {{ ref('dim_products') }} dp
+        {{ ref('H3_dim_products') }} dp
     ON
         foi.product_id = dp.product_id
     GROUP BY
@@ -16,13 +16,13 @@ promo_distributions AS (
         foi.product_id,
         dpr.EUR_discount / COUNT(*) OVER (PARTITION BY fo.order_id) AS distributed_discount
     FROM
-        {{ ref('facts_order_items') }} foi
+        {{ ref('H3_facts_order_items') }} foi
     JOIN
-        {{ ref('facts_orders') }} fo
+        {{ ref('H3_facts_orders') }} fo
     ON
         foi.order_id = fo.order_id
     JOIN
-        {{ ref('dim_orders') }} dpr
+        {{ ref('H3_dim_orders') }} dpr
     ON
         fo.order_id = dpr.order_id
     WHERE
@@ -47,7 +47,7 @@ SELECT
 FROM
     f_order_items foi
 JOIN
-    {{ ref('dim_products') }} dp
+    {{ ref('H3_dim_products') }} dp
 ON
     foi.product_id = dp.product_id
 LEFT JOIN

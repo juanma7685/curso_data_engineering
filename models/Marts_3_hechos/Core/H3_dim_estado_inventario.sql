@@ -3,7 +3,7 @@ WITH ventas_por_producto AS (
         foi.product_id,
         SUM(foi.quantity) AS ventas_totales
     FROM
-        {{ ref('facts_order_items') }} foi
+        {{ ref('H3_facts_order_items') }} foi
     GROUP BY
         foi.product_id
 )
@@ -15,7 +15,7 @@ SELECT
     vp.ventas_totales,
     vp.ventas_totales / NULLIF(dp.inventory, 0) AS ratio_ventas_vs_stock
 FROM
-    {{ ref('dim_products') }} dp
+    {{ ref('H3_dim_products') }} dp
 LEFT JOIN
     ventas_por_producto vp
 ON

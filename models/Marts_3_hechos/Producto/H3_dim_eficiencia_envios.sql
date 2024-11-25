@@ -6,9 +6,9 @@ with dim_eficiencia_envios as (
         AVG(do.shipping_cost) AS costo_envio_promedio,
         AVG(DATEDIFF(DAY, do.created_at, do.delivered_at)) AS promedio_tiempo_entrega_dias
     FROM
-        {{ ref('facts_orders') }} fo
+        {{ ref('H3_facts_orders') }} fo
     LEFT JOIN
-        {{ ref('dim_orders') }} do
+        {{ ref('H3_dim_orders') }} do
     ON
         fo.order_id = do.order_id
     GROUP BY
