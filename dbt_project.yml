@@ -34,9 +34,14 @@ models:
       +materialized: view
 
     # Configuration for marts models
-    Marts:
+    Marts_3_hechos:
       +database: "ALUMNO11_DEV_GOLD_DB"
-      +schema: "marts"
+      +schema: "marts_3_hechos"
+      +materialized: view
+
+    Marts_2_hechos:
+      +database: "ALUMNO11_DEV_GOLD_DB"
+      +schema: "marts_2_hechos"
       +materialized: view
 
 seeds:
