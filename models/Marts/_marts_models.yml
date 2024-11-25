@@ -1,0 +1,168 @@
+version: 2
+
+models:
+  - name: facts_orders
+    description: "Tabla de hechos para pedidos"
+    columns:
+      - name: order_id
+        description: "Identificador único del pedido"
+      - name: address_id
+        description: "Identificador de la dirección"
+      - name: user_id
+        description: "Identificador del usuario"
+
+  - name: facts_order_items
+    description: "Tabla de hechos para artículos de pedidos"
+    columns:
+      - name: order_items_id
+        description: "Identificador único del artículo del pedido"
+      - name: order_id
+        description: "Identificador del pedido"
+      - name: product_id
+        description: "Identificador del producto"
+      - name: quantity
+        description: "Cantidad del producto pedido"
+      - name: _fivetran_deleted
+        description: "Indicador de si el registro fue eliminado"
+      - name: _fivetran_synced
+        description: "Marca de tiempo de la última sincronización"
+
+  - name: facts_events
+    description: "Tabla de hechos para eventos"
+    columns:
+      - name: event_id
+        description: "Identificador único del evento"
+      - name: page_url
+        description: "URL de la página donde ocurrió el evento"
+      - name: event_type
+        description: "Tipo de evento"
+      - name: user_id
+        description: "Identificador del usuario"
+      - name: product_id
+        description: "Identificador del producto"
+      - name: session_id
+        description: "Identificador de la sesión"
+      - name: created_at
+        description: "Marca de tiempo de cuando se creó el evento"
+
+  - name: dim_users
+    description: "Tabla de dimensión para usuarios"
+    columns:
+      - name: user_id
+        description: "Identificador único del usuario"
+      - name: updated_at
+        description: "Marca de tiempo de la última actualización del usuario"
+      - name: address_id
+        description: "Identificador de la dirección"
+      - name: last_name
+        description: "Apellido del usuario"
+      - name: created_at
+        description: "Marca de tiempo de cuando se creó el usuario"
+      - name: phone_number
+        description: "Número de teléfono del usuario"
+      - name: first_name
+        description: "Nombre del usuario"
+      - name: email
+        description: "Correo electrónico del usuario"
+
+  - name: dim_products
+    description: "Tabla de dimensión para productos"
+    columns:
+      - name: product_id
+        description: "Identificador único del producto"
+      - name: precio
+        description: "Precio del producto"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: inventory
+        description: "Inventario del producto"
+
+  - name: dim_orders
+    description: "Tabla de dimensión para pedidos"
+    columns:
+      - name: order_id
+        description: "Identificador único del pedido"
+      - name: shipping_service
+        description: "Servicio de envío utilizado para el pedido"
+      - name: shipping_cost
+        description: "Costo del envío"
+      - name: created_at
+        description: "Marca de tiempo de cuando se creó el pedido"
+      - name: estimated_delivery_at
+        description: "Marca de tiempo estimada de entrega"
+      - name: name
+        description: "Nombre asociado con el pedido"
+      - name: EUR_discount
+        description: "Descuento aplicado al pedido en EUR"
+      - name: p.status
+        description: "Estado de la promoción"
+      - name: s.status
+        description: "Estado del servicio de envío"
+      - name: order_cost
+        description: "Costo del pedido"
+      - name: order_total
+        description: "Total del pedido"
+      - name: delivered_at
+        description: "Marca de tiempo de cuando se entregó el pedido"
+      - name: tracking_id
+        description: "ID de seguimiento del pedido"
+      - name: o._fivetran_deleted
+        description: "Indicador de si el pedido fue eliminado"
+      - name: o._fivetran_synced
+        description: "Marca de tiempo de la última sincronización"
+
+  - name: dim_fecha
+    description: "Tabla de dimensión para fechas"
+    columns:
+      - name: date_day
+        description: "Día de la fecha"
+      - name: year
+        description: "Año de la fecha"
+      - name: month
+        description: "Mes de la fecha"
+      - name: day
+        description: "Día del mes"
+      - name: week
+        description: "Semana del año"
+      - name: day_of_week
+        description: "Día de la semana"
+      - name: day_of_year
+        description: "Día del año"
+      - name: quarter
+        description: "Trimestre del año"
+      - name: day_type
+        description: "Tipo de día (e.g., día laborable, fin de semana)"
+      - name: day_name
+        description: "Nombre del día"
+
+  - name: dim_budget
+    description: "Tabla de dimensión para presupuesto"
+    columns:
+      - name: budget_id
+        description: "Identificador único del presupuesto"
+      - name: product_id
+        description: "Identificador del producto"
+      - name: quantity
+        description: "Cantidad presupuestada"
+      - name: mes
+        description: "Mes del presupuesto"
+      - name: anyo
+        description: "Año del presupuesto"
+
+  - name: dim_addresses
+    description: "Tabla de dimensión para direcciones"
+    columns:
+      - name: address_id
+        description: "Identificador único de la dirección"
+      - name: zipcode
+        description: "Código postal de la dirección"
+      - name: country
+        description: "País de la dirección"
+      - name: address
+        description: "Línea de dirección"
+      - name: street
+        description: "Calle de la dirección"
+      - name: address_number
+        description: "Número de la dirección"
+      - name: state
+        description: "Estado de la dirección"

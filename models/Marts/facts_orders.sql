@@ -8,10 +8,7 @@ facts_orders as (
     select
         order_id,
         address_id,
-        user_id,
-        shipping_service_id,
-        promo_id,
-        status_id
+        user_id
     from source
 )
 
