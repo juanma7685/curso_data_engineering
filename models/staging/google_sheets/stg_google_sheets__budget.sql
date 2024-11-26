@@ -9,7 +9,8 @@ with
             product_id,
             quantity::int as quantity,
             Month(month) as mes,
-            Year(month) as anyo
+            Year(month) as anyo,
+            _fivetran_synced
 
         from source
 

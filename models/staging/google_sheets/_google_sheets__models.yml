@@ -26,3 +26,5 @@ models:
         description: "Mes correspondiente al presupuesto."
       - name: anyo
         description: "Anyo correspondiente a la actualizacion del presupuesto."
+      - name: _fivetran_synced
+        description: "Fecha de sincronización del registro."

@@ -1,6 +1,6 @@
 {{ config(
     materialized='incremental',
-    unique_key='address_id'  -- Identificador único del registro
+    unique_key='address_id'  
 ) }}
 
 with 
