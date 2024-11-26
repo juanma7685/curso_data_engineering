@@ -1,7 +1,15 @@
-with 
+{{ config(
+    materialized='incremental',
+    unique_key='address_id'  -- Identificador único del registro
+) }}
 
+with 
 source as (
-    select * from {{ ref('stg_sql_server_dbo__addresses') }}
+    select * 
+    from {{ ref('stg_sql_server_dbo__addresses') }}
+    {% if is_incremental() %}
+        where _fivetran_synced > (select max(_fivetran_synced) from {{ this }}) -- Solo datos nuevos o actualizados
+    {% endif %}
 ),
 
 renamed as (
@@ -12,7 +20,9 @@ renamed as (
         address,
         street,
         address_number,
-        state
+        state,
+        _fivetran_deleted,
+        _fivetran_synced
     from source
 )
 
