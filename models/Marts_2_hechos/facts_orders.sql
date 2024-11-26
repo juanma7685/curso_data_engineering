@@ -1,11 +1,22 @@
+{{ config(
+    materialized='incremental',
+    unique_key='order_id'
+) }}
+
 with 
 
 source_orders as (
     select * from {{ ref('stg_sql_server_dbo__orders') }}
+    {% if is_incremental() %}
+        where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+    {% endif %}
 ),
 
 source_order_items as (
     select * from {{ ref('stg_sql_server_dbo__order_items') }}
+    {% if is_incremental() %}
+        where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+    {% endif %}
 ),
 
 facts_orders as (

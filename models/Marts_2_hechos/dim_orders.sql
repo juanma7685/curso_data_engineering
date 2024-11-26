@@ -1,3 +1,8 @@
+{{ config(
+    materialized='incremental',
+    unique_key='order_id'
+) }}
+
 with 
 
 dim_orders as (
@@ -22,6 +27,9 @@ dim_orders as (
     left join {{ ref('stg_sql_server_dbo__promos') }} p on o.promo_id = p.promo_id
     left join {{ ref('stg_sql_server_dbo__shipping_service') }} s on o.shipping_service_id = s.shipping_service_id
     left join {{ ref('stg_sql_server_dbo__status') }} st on o.status_id = st.status_id
+    {% if is_incremental() %}
+        where o._fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+    {% endif %}
 )
 
 select * from dim_orders

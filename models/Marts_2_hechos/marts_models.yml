@@ -38,6 +38,10 @@ models:
         description: "ID de la sesión"
       - name: created_at
         description: "Fecha de creación"
+      - name: _fivetran_deleted
+        description: "Eliminado por Fivetran"
+      - name: _fivetran_synced
+        description: "Sincronizado por Fivetran"
 
   - name: dim_users
     description: "Tabla de dimensión de usuarios"
@@ -58,6 +62,10 @@ models:
         description: "Nombre"
       - name: email
         description: "Correo electrónico"
+      - name: _fivetran_deleted
+        description: "Eliminado por Fivetran"
+      - name: _fivetran_synced
+        description: "Sincronizado por Fivetran"
 
   - name: dim_products
     description: "Tabla de dimensión de productos"
@@ -70,6 +78,10 @@ models:
         description: "Nombre del producto"
       - name: inventory
         description: "Inventario"
+      - name: _fivetran_deleted
+        description: "Eliminado por Fivetran"
+      - name: _fivetran_synced
+        description: "Sincronizado por Fivetran"
 
   - name: dim_orders
     description: "Tabla de dimensión de órdenes"
@@ -142,6 +154,10 @@ models:
         description: "Mes"
       - name: anyo
         description: "Año"
+      - name: _fivetran_deleted
+        description: "Eliminado por Fivetran"
+      - name: _fivetran_synced
+        description: "Sincronizado por Fivetran"
 
   - name: dim_addresses
     description: "Tabla de dimensión de direcciones"
@@ -160,3 +176,7 @@ models:
         description: "Número de dirección"
       - name: state
         description: "Estado"
+      - name: _fivetran_deleted
+        description: "Eliminado por Fivetran"
+      - name: _fivetran_synced
+        description: "Sincronizado por Fivetran"
