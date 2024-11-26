@@ -154,8 +154,6 @@ models:
         description: "Mes"
       - name: anyo
         description: "Año"
-      - name: _fivetran_deleted
-        description: "Eliminado por Fivetran"
       - name: _fivetran_synced
         description: "Sincronizado por Fivetran"
 
