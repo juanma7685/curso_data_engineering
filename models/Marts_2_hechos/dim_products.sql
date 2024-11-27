@@ -8,7 +8,7 @@ with
 source as (
     select * from {{ ref('stg_sql_server_dbo__products') }}
     {% if is_incremental() %}
-        where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+        where llegada_id > (select max(llegada_id) from {{ this }})
     {% endif %}
 ),
 
@@ -18,8 +18,7 @@ renamed as (
         precio,
         nombre_producto,
         inventory,
-        _fivetran_deleted,
-        _fivetran_synced
+        llegada_id
     from source
 )
 

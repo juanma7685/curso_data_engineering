@@ -10,7 +10,7 @@ filtered_orders as (
     select * 
     from {{ ref('stg_sql_server_dbo__orders') }} o
     {% if is_incremental() %}
-        where o._fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+        where o.llegada_id > (select max(o.llegada_id) from {{ this }})
     {% endif %}
 ),
 
@@ -30,8 +30,7 @@ dim_orders as (
         o.order_total,
         o.delivered_at,
         o.tracking_id,
-        o._fivetran_deleted,
-        o._fivetran_synced
+        o.llegada_id
     from 
         filtered_orders o
     left join {{ ref('stg_sql_server_dbo__promos') }} p on o.promo_id = p.promo_id

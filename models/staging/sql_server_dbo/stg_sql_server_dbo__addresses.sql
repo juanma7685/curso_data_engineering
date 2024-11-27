@@ -16,7 +16,7 @@ renamed as (
         split_part(address, ' ', 1) as address_number,
         regexp_substr(address, ' (.*)', 1, 1, 'e',1) as street,
         state,
-        _fivetran_synced
+        _DLT_LOAD_ID as llegada_id
 
     from source
 

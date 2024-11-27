@@ -14,7 +14,7 @@ renamed as (
         phone_number,
         first_name,
         email,
-        _fivetran_synced
+        _DLT_LOAD_ID as llegada_id
     from source
 )
 

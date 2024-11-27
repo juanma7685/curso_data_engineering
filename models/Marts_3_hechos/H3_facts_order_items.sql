@@ -10,8 +10,7 @@ facts_order_items as (
         order_id,
         product_id,
         quantity,
-        _fivetran_deleted,
-        _fivetran_synced
+        llegada_id
     from source
 )
 

@@ -8,14 +8,14 @@ with
 source_orders as (
     select * from {{ ref('stg_sql_server_dbo__orders') }}
     {% if is_incremental() %}
-        where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+        where llegada_id > (select max(llegada_id) from {{ this }})
     {% endif %}
 ),
 
 source_order_items as (
     select * from {{ ref('stg_sql_server_dbo__order_items') }}
     {% if is_incremental() %}
-        where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+        where llegada_id > (select max(llegada_id) from {{ this }})
     {% endif %}
 ),
 
@@ -27,8 +27,7 @@ facts_orders as (
         oi.order_items_id,
         oi.product_id,
         oi.quantity,
-        oi._fivetran_deleted,
-        oi._fivetran_synced
+        oi.llegada_id
     from source_orders o
     join source_order_items oi on o.order_id = oi.order_id
 )

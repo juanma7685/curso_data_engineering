@@ -15,8 +15,7 @@ dim_orders as (
         order_total,
         delivered_at,
         tracking_id,
-        o._fivetran_deleted,
-        o._fivetran_synced
+        llegada_id
     from 
     {{ ref('stg_sql_server_dbo__orders') }} o
     left join {{ ref('stg_sql_server_dbo__promos') }} p on o.promo_id = p.promo_id

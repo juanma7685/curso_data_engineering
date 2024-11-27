@@ -13,7 +13,7 @@ renamed as (
         price::DECIMAL(10,2) as precio,
         name as nombre_producto,
         inventory,
-        _fivetran_synced
+        _DLT_LOAD_ID as llegada_id
 
     from source
 

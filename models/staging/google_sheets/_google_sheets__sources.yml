@@ -22,6 +22,9 @@ sources:
           - name: product_id
             data_type: varchar
             description: ""
-          - name: _fivetran_synced
-            data_type: timestamp_tz
-            description: ""
+          - name: _DLT_LOAD_ID
+            data_type: varchar
+            description: "Load ID for Delta Lake"
+          - name: _DLT_ID
+            data_type: varchar
+            description: "ID for Delta Lake"

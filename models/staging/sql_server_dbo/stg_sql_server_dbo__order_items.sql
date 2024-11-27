@@ -13,7 +13,7 @@ renamed as (
         order_id,
         product_id,
         quantity,
-        _fivetran_synced
+        _DLT_LOAD_ID as llegada_id
 
     from source
 

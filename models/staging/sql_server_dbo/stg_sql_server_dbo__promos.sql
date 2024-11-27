@@ -10,8 +10,7 @@ renamed as (
         promo_id as name,
         discount as EUR_discount,
         status,
-        -- _fivetran_deleted,
-        _fivetran_synced
+        _DLT_LOAD_ID as llegada_id
     from source
 )
 
