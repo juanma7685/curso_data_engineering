@@ -13,7 +13,6 @@ renamed as (
         price::DECIMAL(10,2) as precio,
         name as nombre_producto,
         inventory,
-        _fivetran_deleted,
         _fivetran_synced
 
     from source

@@ -16,7 +16,6 @@ renamed as (
         product_id,
         session_id,
         CAST(created_at AS DATE) as created_at,
-        _fivetran_deleted,
         _fivetran_synced
 
     from source

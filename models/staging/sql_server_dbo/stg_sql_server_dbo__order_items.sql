@@ -13,7 +13,6 @@ renamed as (
         order_id,
         product_id,
         quantity,
-        _fivetran_deleted,
         _fivetran_synced
 
     from source
