@@ -19,8 +19,7 @@ renamed as (
         {{ dbt_utils.generate_surrogate_key(["COALESCE(NULLIF(shipping_service, ''), 'Waiting')"]) }} as shipping_service_id,
         {{ dbt_utils.generate_surrogate_key(["COALESCE(NULLIF(promo_id, ''), 'No Promo')"]) }} as promo_id,
         {{ dbt_utils.generate_surrogate_key(['status']) }} as status_id,
-        _fivetran_deleted,
-        _fivetran_synced
+        _DLT_LOAD_ID as llegada_id
     from source 
 )
 

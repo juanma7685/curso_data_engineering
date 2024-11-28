@@ -24,12 +24,12 @@ sources:
           - name: state
             data_type: varchar
             description: ""
-          - name: _fivetran_deleted
-            data_type: boolean
-            description: ""
-          - name: _fivetran_synced
-            data_type: timestamp_tz
-            description: ""
+          - name: _DLT_LOAD_ID
+            data_type: varchar
+            description: "Load ID for Delta Lake"
+          - name: _DLT_ID
+            data_type: varchar
+            description: "ID for Delta Lake"
 
       - name: events
         description: ""
@@ -58,12 +58,12 @@ sources:
           - name: order_id
             data_type: varchar
             description: ""
-          - name: _fivetran_deleted
-            data_type: boolean
-            description: ""
-          - name: _fivetran_synced
-            data_type: timestamp_tz
-            description: ""
+          - name: _DLT_LOAD_ID
+            data_type: varchar
+            description: "Load ID for Delta Lake"
+          - name: _DLT_ID
+            data_type: varchar
+            description: "ID for Delta Lake"
 
       - name: order_items
         description: ""
@@ -77,12 +77,12 @@ sources:
           - name: quantity
             data_type: number
             description: ""
-          - name: _fivetran_deleted
-            data_type: boolean
-            description: ""
-          - name: _fivetran_synced
-            data_type: timestamp_tz
-            description: ""
+          - name: _DLT_LOAD_ID
+            data_type: varchar
+            description: "Load ID for Delta Lake"
+          - name: _DLT_ID
+            data_type: varchar
+            description: "ID for Delta Lake"
 
       - name: orders
         description: ""
@@ -126,12 +126,12 @@ sources:
           - name: status
             data_type: varchar
             description: ""
-          - name: _fivetran_deleted
-            data_type: boolean
-            description: ""
-          - name: _fivetran_synced
-            data_type: timestamp_tz
-            description: ""
+          - name: _DLT_LOAD_ID
+            data_type: varchar
+            description: "Load ID for Delta Lake"
+          - name: _DLT_ID
+            data_type: varchar
+            description: "ID for Delta Lake"
 
       - name: products
         description: ""
@@ -148,12 +148,12 @@ sources:
           - name: inventory
             data_type: number
             description: ""
-          - name: _fivetran_deleted
-            data_type: boolean
-            description: ""
-          - name: _fivetran_synced
-            data_type: timestamp_tz
-            description: ""
+          - name: _DLT_LOAD_ID
+            data_type: varchar
+            description: "Load ID for Delta Lake"
+          - name: _DLT_ID
+            data_type: varchar
+            description: "ID for Delta Lake"
 
       - name: promos
         description: ""
@@ -167,12 +167,12 @@ sources:
           - name: status
             data_type: varchar
             description: ""
-          - name: _fivetran_deleted
-            data_type: boolean
-            description: ""
-          - name: _fivetran_synced
-            data_type: timestamp_tz
-            description: ""
+          - name: _DLT_LOAD_ID
+            data_type: varchar
+            description: "Load ID for Delta Lake"
+          - name: _DLT_ID
+            data_type: varchar
+            description: "ID for Delta Lake"
 
       - name: users
         description: ""
@@ -204,9 +204,9 @@ sources:
           - name: email
             data_type: varchar
             description: ""
-          - name: _fivetran_deleted
-            data_type: boolean
-            description: ""
-          - name: _fivetran_synced
-            data_type: timestamp_tz
-            description: ""
+          - name: _DLT_LOAD_ID
+            data_type: varchar
+            description: "Load ID for Delta Lake"
+          - name: _DLT_ID
+            data_type: varchar
+            description: "ID for Delta Lake"

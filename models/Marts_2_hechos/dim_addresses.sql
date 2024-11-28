@@ -8,7 +8,7 @@ source as (
     select * 
     from {{ ref('stg_sql_server_dbo__addresses') }}
     {% if is_incremental() %}
-        where _fivetran_synced > (select max(_fivetran_synced) from {{ this }}) -- Solo datos nuevos o actualizados
+        where llegada_id > (select max(llegada_id) from {{ this }}) -- Solo datos nuevos o actualizados
     {% endif %}
 ),
 
@@ -21,8 +21,7 @@ renamed as (
         street,
         address_number,
         state,
-        _fivetran_deleted,
-        _fivetran_synced
+        llegada_id
     from source
 )
 

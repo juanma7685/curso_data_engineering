@@ -26,5 +26,7 @@ models:
         description: "Mes correspondiente al presupuesto."
       - name: anyo
         description: "Anyo correspondiente a la actualizacion del presupuesto."
-      - name: _fivetran_synced
-        description: "Fecha de sincronización del registro."
+      - name: llegada_id
+        description: "Identificador de la carga de datos."
+        tests:
+          - not_null

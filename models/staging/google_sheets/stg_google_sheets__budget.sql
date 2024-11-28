@@ -10,8 +10,7 @@ with
             quantity::int as quantity,
             Month(month) as mes,
             Year(month) as anyo,
-            _fivetran_synced
-
+            _DLT_LOAD_ID as llegada_id
         from source
 
     )

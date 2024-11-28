@@ -30,11 +30,8 @@ models:
           - dbt_expectations.expect_column_values_to_be_in_set:
               value_set: ["active", "inactive"]
 
-      - name: _fivetran_deleted
-        description: "Indica si la fila fue eliada (campo generado por Fivetran)."
-
-      - name: _fivetran_synced
-        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+      - name: llegada_id
+        description: "Identificador de la carga de datos."
         tests:
           - not_null
 
@@ -72,10 +69,8 @@ models:
         description: "Cantidad de productos en inventario."
         tests:
           - not_null
-      - name: _fivetran_deleted
-        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
-      - name: _fivetran_synced
-        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+      - name: llegada_id
+        description: "Identificador de la carga de datos."
         tests:
           - not_null
 
@@ -138,10 +133,8 @@ models:
         description: "Clave subrogada generada utilizando la columna status."
         tests:
           - not_null
-      - name: _fivetran_deleted
-        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
-      - name: _fivetran_synced
-        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+      - name: llegada_id
+        description: "Identificador de la carga de datos."
         tests:
           - not_null
 
@@ -165,10 +158,8 @@ models:
         description: "Cantidad de ese producto en el en esa order item."
         tests:
           - not_null
-      - name: _fivetran_deleted
-        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
-      - name: _fivetran_synced
-        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+      - name: llegada_id
+        description: "Identificador de la carga de datos."
         tests:
           - not_null
 
@@ -205,10 +196,8 @@ models:
           - relationships:
               to: ref('fecha')
               field: date_day
-      - name: _fivetran_deleted
-        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
-      - name: _fivetran_synced
-        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+      - name: llegada_id
+        description: "Identificador de la carga de datos."
         tests:
           - not_null
 
@@ -254,10 +243,8 @@ models:
         description: "Nombre de la calle."
         tests:
           - not_null
-      - name: _fivetran_deleted
-        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
-      - name: _fivetran_synced
-        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+      - name: llegada_id
+        description: "Identificador de la carga de datos."
         tests:
           - not_null
 
@@ -301,10 +288,8 @@ models:
         description: "Correo electrónico del usuario."
         tests:
           - not_null
-      - name: _fivetran_deleted
-        description: "Indica si la fila fue eliminada (campo generado por Fivetran)."
-      - name: _fivetran_synced
-        description: "Marca la sincronización más reciente (campo generado por Fivetran)."
+      - name: llegada_id
+        description: "Identificador de la carga de datos."
         tests:
           - not_null
 

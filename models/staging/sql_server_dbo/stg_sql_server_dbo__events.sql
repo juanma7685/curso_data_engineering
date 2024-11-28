@@ -16,8 +16,7 @@ renamed as (
         product_id,
         session_id,
         CAST(created_at AS DATE) as created_at,
-        _fivetran_deleted,
-        _fivetran_synced
+        _DLT_LOAD_ID as llegada_id
 
     from source
 
