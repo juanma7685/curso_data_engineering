@@ -1,3 +1,10 @@
+{{
+  config(
+    materialized='incremental',
+    unique_key='address_id'
+  )
+}}
+
 with 
 
 source as (
@@ -27,7 +34,7 @@ no_addresses as (
         null as address_number,
         null as street,
         null as state,
-        null as llegada_id
+        '0' as llegada_id
 )
 
 select * from renamed
@@ -35,3 +42,7 @@ select * from renamed
 union all
 
 select * from no_addresses
+
+{% if is_incremental() %}
+where llegada_id > (select max(llegada_id) from {{ this }})
+{% endif %}

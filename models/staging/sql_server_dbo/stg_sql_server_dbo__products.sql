@@ -1,7 +1,14 @@
+{{
+  config(
+    materialized='incremental',
+    unique_key='product_id'
+  )
+}}
+
 with 
 
 source as (
-    select * 
+    select distinct *
     from {{ source('sql_server_dbo', 'products') }}
 ),
 
@@ -17,17 +24,29 @@ renamed as (
 ),
 
 no_products as (
-    select
-        {{ dbt_utils.generate_surrogate_key(["null", "null"]) }} as product_id,
+    select distinct
+        {{ dbt_utils.generate_surrogate_key(["'no products'", "'no products'"]) }} as product_id,
         0 as precio,
         'no products' as nombre_producto,
-        'no products' as category,
+        {{ dbt_utils.generate_surrogate_key(["'no products'"]) }} as category_id,
         0 as inventory,
-        null as llegada_id
+        '0' as llegada_id
+),
+
+deduplicated as (
+    select *, 
+           row_number() over (partition by product_id order by llegada_id desc) as row_num
+    from (
+        select * from renamed
+        union all
+        select * from no_products
+    )
 )
 
-select * from renamed
+select *
+from deduplicated
+where row_num = 1
 
-union all
-
-select * from no_products
+{% if is_incremental() %}
+and llegada_id > (select max(llegada_id) from {{ this }})
+{% endif %}
