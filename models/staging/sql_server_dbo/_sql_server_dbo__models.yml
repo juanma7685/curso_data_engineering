@@ -1,307 +1,307 @@
 version: 2
 
 models:
-  - name: stg_sql_server_dbo__promos
-    description: "Modelo que transforma los datos de la tabla Promos y genera una clave subrogada."
-    columns:
-      - name: promo_id
-        description: "Clave subrogada generada utilizando las columnas name, discount y status."
-        tests:
-          - unique
-          - not_null
-
-      - name: name
-        description: "Nombre de la promo."
-        tests:
-          - not_null
-
-      - name: EUR_discount
-        description: "Euros de descuento aplicado a la promoción."
-        tests:
-          - not_null
-          - dbt_expectations.expect_column_values_to_be_between:
-              min_value: 0
-              max_value: 100
-
-      - name: status
-        description: "Estado actual de la promoción."
-        tests:
-          - not_null
-          - dbt_expectations.expect_column_values_to_be_in_set:
-              value_set: ["active", "inactive"]
-
-      - name: llegada_id
-        description: "Identificador de la carga de datos."
-        tests:
-          - not_null
-
-  - name: stg_sql_server_dbo__shipping_service
-    description: "Modelo que transforma los datos de la tabla Orders para obtener los servicios de envío."
-    columns:
-      - name: shipping_service_id
-        description: "Clave subrogada generada utilizando la columna shipping_service."
-        tests:
-          - unique
-          - not_null
-      - name: shipping_service
-        description: "Nombre del servicio de envío."
-        tests:
-          - unique
-          - not_null
-
-  - name: stg_sql_server_dbo__products
-    description: "Modelo que transforma los datos de la tabla Products."
-    columns:
-      - name: product_id
-        description: "Identificador único del producto."
-        tests:
-          - unique
-          - not_null
-      - name: precio
-        description: "Precio del producto."
-        tests:
-          - not_null
-      - name: nombre_producto
-        description: "Nombre del producto."
-        tests:
-          - not_null
-      - name: inventory
-        description: "Cantidad de productos en inventario."
-        tests:
-          - not_null
-      - name: llegada_id
-        description: "Identificador de la carga de datos."
-        tests:
-          - not_null
-
-  - name: stg_sql_server_dbo__orders
-    description: "Modelo que transforma los datos de la tabla Orders."
-    columns:
-      - name: order_id
-        description: "Identificador único del pedido."
-        tests:
-          - unique
-          - not_null
-      - name: address_id
-        description: "Identificador único de la dirección."
-        tests:
-          - not_null
-      - name: user_id
-        description: "Identificador único del usuario."
-        tests:
-          - not_null
-      - name: shipping_cost
-        description: "Costo del servicio de envío."
-      - name: created_at
-        description: "Fecha de creación del pedido."
-        tests:
-          - not_null
-          - relationships:
-              to: ref('fecha')
-              field: date_day
-      - name: estimated_delivery_at
-        description: "Fecha estimada de entrega del pedido."
-        tests:
-          - relationships:
-              to: ref('fecha')
-              field: date_day
-      - name: order_cost
-        description: "Costo del pedido."
-        tests:
-          - not_null
-      - name: order_total
-        description: "Total del pedido."
-        tests:
-          - not_null
-      - name: delivered_at
-        description: "Fecha de entrega del pedido en UTC."
-        tests:
-          - relationships:
-              to: ref('fecha')
-              field: date_day
-      - name: tracking_id
-        description: "Identificador de seguimiento del pedido."
-      - name: shipping_service_id
-        description: "Clave subrogada generada utilizando la columna shipping_service."
-        tests:
-          - not_null
-      - name: promo_id
-        description: "Clave subrogada generada utilizando la columna promo_id."
-        tests:
-          - not_null
-      - name: status_id
-        description: "Clave subrogada generada utilizando la columna status."
-        tests:
-          - not_null
-      - name: llegada_id
-        description: "Identificador de la carga de datos."
-        tests:
-          - not_null
-
-  - name: stg_sql_server_dbo__order_items
-    description: "Modelo que transforma los datos de la tabla Order Items."
-    columns:
-      - name: order_items_id
-        description: "Clave subrogada generada utilizando las columnas order_id y product_id."
-        tests:
-          - unique
-          - not_null
-      - name: order_id
-        description: "Identificador único del pedido."
-        tests:
-          - not_null
-      - name: product_id
-        description: "Identificador único del producto."
-        tests:
-          - not_null
-      - name: quantity
-        description: "Cantidad de ese producto en el en esa order item."
-        tests:
-          - not_null
-      - name: llegada_id
-        description: "Identificador de la carga de datos."
-        tests:
-          - not_null
-
-  - name: stg_sql_server_dbo__events
-    description: "Modelo que transforma los datos de la tabla Events."
-    columns:
-      - name: event_id
-        description: "Identificador único del evento."
-        tests:
-          - unique
-          - not_null
-      - name: page_url
-        description: "URL de la página donde ocurrió el evento."
-        tests:
-          - not_null
-      - name: event_type_id
-        description: "Clave subrogada generada utilizando la columna event_type."
-        tests:
-          - not_null
-      - name: user_id
-        description: "Identificador único del usuario."
-        tests:
-          - not_null
-      - name: product_id
-        description: "Identificador único del producto."
-      - name: session_id
-        description: "Identificador único de la sesión."
-        tests:
-          - not_null
-      - name: created_at
-        description: "Fecha de creación del evento."
-        tests:
-          - not_null
-          - relationships:
-              to: ref('fecha')
-              field: date_day
-      - name: llegada_id
-        description: "Identificador de la carga de datos."
-        tests:
-          - not_null
-
-  - name: stg_sql_server_dbo__event_type
-    description: "Modelo que transforma los datos de la tabla Events para obtener los tipos de eventos."
-    columns:
-      - name: event_type_id
-        description: "Clave subrogada generada utilizando la columna event_type."
-      - name: event_type
-        description: "Tipo de evento."
-        tests:
-          - not_null
-
-  - name: stg_sql_server_dbo__addresses
-    description: "Modelo que transforma los datos de la tabla Addresses."
-    columns:
-      - name: address_id
-        description: "Identificador único de la dirección."
-        tests:
-          - unique
-          - not_null
-      - name: zipcode
-        description: "Código postal de la dirección."
-        tests:
-          - not_null
-      - name: country
-        description: "País de la dirección."
-        tests:
-          - not_null
-      - name: address
-        description: "Dirección completa."
-        tests:
-          - not_null
-      - name: state
-        description: "Estado o provincia de la dirección."
-        tests:
-          - not_null
-      - name: address_number
-        description: "Número de la dirección."
-        tests:
-          - not_null
-      - name: street
-        description: "Nombre de la calle."
-        tests:
-          - not_null
-      - name: llegada_id
-        description: "Identificador de la carga de datos."
-        tests:
-          - not_null
-
   - name: stg_sql_server_dbo__users
-    description: "Modelo que transforma los datos de la tabla Users."
+    description: "Tabla de staging para usuarios"
     columns:
       - name: user_id
-        description: "Identificador único del usuario."
+        description: "Identificador único para el usuario"
         tests:
           - unique
           - not_null
       - name: updated_at
-        description: "Fecha de última actualización del usuario."
+        description: "Fecha de la última actualización del usuario"
         tests:
           - not_null
-          - relationships:
-              to: ref('fecha')
-              field: date_day
       - name: address_id
-        description: "Identificador único de la dirección del usuario."
+        description: "Identificador único para la dirección"
         tests:
-          - not_null
-      - name: last_name
-        description: "Apellido del usuario."
-        tests:
-          - not_null
-      - name: created_at
-        description: "Fecha de creación del usuario."
-        tests:
-          - not_null
           - relationships:
-              to: ref('fecha')
-              field: date_day
+              to: ref('stg_sql_server_dbo__addresses')
+              field: address_id
+      - name: last_name
+        description: "Apellido del usuario"
+        tests:
+          - dbt_expectations.expect_column_value_lengths_to_be_between:
+              min_value: 1
+              max_value: 50
+      - name: created_at
+        description: "Fecha de creación del usuario"
+        tests:
+          - not_null
       - name: phone_number
-        description: "Número de teléfono del usuario."
+        description: "Número de teléfono del usuario"
       - name: first_name
-        description: "Nombre del usuario."
+        description: "Nombre del usuario"
         tests:
-          - not_null
+          - dbt_expectations.expect_column_value_lengths_to_be_between:
+              min_value: 1
+              max_value: 50
       - name: email
-        description: "Correo electrónico del usuario."
+        description: "Correo electrónico del usuario"
         tests:
-          - not_null
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
       - name: llegada_id
-        description: "Identificador de la carga de datos."
+        description: "ID de carga para los datos"
         tests:
           - not_null
 
   - name: stg_sql_server_dbo__status
-    description: "Modelo que transforma los datos de la tabla Orders para obtener los estados de los pedidos."
+    description: "Tabla de staging para estados de pedidos"
     columns:
       - name: status_id
-        description: "Clave subrogada generada utilizando la columna status."
+        description: "Identificador único para el estado"
         tests:
           - unique
           - not_null
       - name: status
-        description: "Estado del pedido."
+        description: "Estado del pedido"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              value_set: ['preparing', 'delivered', 'shipped']
+
+  - name: stg_sql_server_dbo__shipping_service
+    description: "Tabla de staging para servicios de envío"
+    columns:
+      - name: shipping_service_id
+        description: "Identificador único para el servicio de envío"
+        tests:
+          - unique
+          - not_null
+      - name: shipping_service
+        description: "Nombre del servicio de envío"
+
+  - name: stg_sql_server_dbo__promos
+    description: "Tabla de staging para promociones"
+    columns:
+      - name: promo_id
+        description: "Identificador único para la promoción"
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: "Nombre de la promoción"
+      - name: EUR_discount
+        description: "Monto del descuento en EUR"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1000
+      - name: status
+        description: "Estado de la promoción"
+      - name: llegada_id
+        description: "ID de carga para los datos"
+
+  - name: stg_sql_server_dbo__products
+    description: "Tabla de staging para productos"
+    columns:
+      - name: product_id
+        description: "Identificador único para el producto"
+        tests:
+          - unique
+          - not_null
+      - name: precio
+        description: "Precio del producto"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: category_id
+        description: "Identificador único para la categoría del producto"
+      - name: inventory
+        description: "Inventario del producto"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+      - name: llegada_id
+        description: "ID de carga para los datos"
+
+  - name: stg_sql_server_dbo__orders
+    description: "Tabla de staging para pedidos"
+    columns:
+      - name: order_id
+        description: "Identificador único para el pedido"
+        tests:
+          - unique
+          - not_null
+      - name: address_id
+        description: "Identificador único para la dirección"
+        tests:
+          - relationships:
+              to: ref('stg_sql_server_dbo__addresses')
+              field: address_id
+      - name: user_id
+        description: "Identificador único para el usuario"
+        tests:
+          - relationships:
+              to: ref('stg_sql_server_dbo__users')
+              field: user_id
+      - name: shipping_cost
+        description: "Costo de envío"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 500
+      - name: created_at
+        description: "Fecha de creación del pedido"
         tests:
           - not_null
+      - name: estimated_delivery_at
+        description: "Fecha estimada de entrega"
+      - name: order_cost
+        description: "Costo del pedido"
+      - name: order_total
+        description: "Monto total del pedido"
+      - name: delivered_at
+        description: "Fecha de entrega del pedido"
+      - name: tracking_id
+        description: "ID de seguimiento del pedido"
+      - name: shipping_service_id
+        description: "Identificador único para el servicio de envío"
+        tests:
+          - relationships:
+              to: ref('stg_sql_server_dbo__shipping_service')
+              field: shipping_service_id
+      - name: promo_id
+        description: "Identificador único para la promoción"
+        tests:
+          - relationships:
+              to: ref('stg_sql_server_dbo__promos')
+              field: promo_id
+      - name: status_id
+        description: "Identificador único para el estado"
+        tests:
+          - relationships:
+              to: ref('stg_sql_server_dbo__status')
+              field: status_id
+      - name: llegada_id
+        description: "ID de carga para los datos"
+        tests:
+          - not_null
+
+  - name: stg_sql_server_dbo__order_items
+    description: "Tabla de staging para artículos de pedidos"
+    columns:
+      - name: order_items_id
+        description: "Identificador único para el artículo del pedido"
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Identificador único para el pedido"
+        tests:
+          - relationships:
+              to: ref('stg_sql_server_dbo__orders')
+              field: order_id
+      - name: product_id
+        description: "Identificador único para el producto"
+        tests:
+          - relationships:
+              to: ref('stg_sql_server_dbo__products')
+              field: product_id
+      - name: quantity
+        description: "Cantidad del producto pedido"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+      - name: llegada_id
+        description: "ID de carga para los datos"
+
+  - name: stg_sql_server_dbo__events
+    description: "Tabla de staging para eventos"
+    columns:
+      - name: event_id
+        description: "Identificador único para el evento"
+        tests:
+          - unique
+          - not_null
+      - name: page_url
+        description: "URL de la página donde ocurrió el evento"
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^(http|https)://'
+      - name: domain
+        description: "Dominio extraído de la URL de la página"
+      - name: page_id
+        description: "ID único extraído de la URL de la página"
+      - name: event_type_id
+        description: "Identificador único para el tipo de evento"
+        tests:
+          - relationships:
+              to: ref('stg_sql_server_dbo__event_type')
+              field: event_type_id
+      - name: user_id
+        description: "Identificador único para el usuario"
+        tests:
+          - relationships:
+              to: ref('stg_sql_server_dbo__users')
+              field: user_id
+      - name: product_id
+        description: "Identificador único para el producto"
+        tests:
+          - relationships:
+              to: ref('stg_sql_server_dbo__products')
+              field: product_id
+      - name: session_id
+        description: "ID de sesión para el evento"
+        tests:
+          - not_null
+      - name: created_at
+        description: "Fecha en que ocurrió el evento"
+        tests:
+          - not_null
+      - name: llegada_id
+        description: "ID de carga para los datos"
+        tests:
+          - not_null
+
+  - name: stg_sql_server_dbo__event_type
+    description: "Tabla de staging para tipos de eventos"
+    columns:
+      - name: event_type
+        description: "Tipo de evento"
+      - name: event_type_id
+        description: "Identificador único para el tipo de evento"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_sql_server_dbo__addresses
+    description: "Tabla de staging para direcciones"
+    columns:
+      - name: address_id
+        description: "Identificador único para la dirección"
+        tests:
+          - unique
+          - not_null
+      - name: zipcode
+        description: "Código postal de la dirección"
+        tests:
+          - dbt_expectations.expect_column_value_lengths_to_be_between:
+              min_value: 5
+              max_value: 10
+      - name: country
+        description: "País de la dirección"
+      - name: address
+        description: "Dirección completa"
+      - name: address_number
+        description: "Número de la dirección"
+      - name: street
+        description: "Nombre de la calle de la dirección"
+      - name: state
+        description: "Estado de la dirección"
+      - name: llegada_id
+        description: "ID de carga para los datos"
+
+  - name: stg_sql_server_dbo__category
+    description: "Tabla de staging para categorías"
+    columns:
+      - name: category_id
+        description: "Identificador único para la categoría"
+        tests:
+          - unique
+          - not_null
+      - name: category
+        description: "Nombre de la categoría"

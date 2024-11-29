@@ -14,7 +14,7 @@ models:
         tests:
           - not_null
           - relationships:
-              to: source('sql_server_dbo','products')
+              to: ref('stg_sql_server_dbo__products')
               field: product_id
       - name: quantity
         description: "Cantidad transformada a tipo entero."
@@ -24,8 +24,89 @@ models:
               min_value: 0
       - name: mes
         description: "Mes correspondiente al presupuesto."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+              max_value: 12
       - name: anyo
         description: "Anyo correspondiente a la actualizacion del presupuesto."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 2020
+      - name: llegada_id
+        description: "Identificador de la carga de datos."
+        tests:
+          - not_null
+
+  - name: stg_google_sheets__reviews
+    description: ""
+    columns:
+      - name: review_id
+        description: "Identificador único de la reseña."
+        tests:
+          - not_null
+          - unique
+      - name: user_id
+        description: "Identificador único del usuario."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sql_server_dbo__users')
+              field: user_id
+      - name: product_id
+        description: "Identificador único del producto."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sql_server_dbo__products')
+              field: product_id
+      - name: rating
+        description: "Calificación transformada a tipo entero."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+              max_value: 5
+      - name: comments
+        description: "Comentarios de la reseña."
+        tests:
+          - dbt_expectations.expect_column_value_lengths_to_be_between:
+              min_value: 0
+              max_value: 1000
+      - name: created_at
+        description: "Fecha de creación de la reseña."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
+      - name: llegada_id
+        description: "Identificador de la carga de datos."
+        tests:
+          - not_null
+
+  - name: stg_google_sheets__returns
+    description: ""
+    columns:
+      - name: return_id
+        description: "Identificador único de la devolución."
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        description: "Identificador único del pedido."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sql_server_dbo__orders')
+              field: order_id
+      - name: user_id
+        description: "Identificador único del usuario."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sql_server_dbo__users')
+              field: user_id
+      - name: return_date
+        description: "Fecha de la devolución."
       - name: llegada_id
         description: "Identificador de la carga de datos."
         tests:

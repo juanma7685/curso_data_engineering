@@ -1,13 +1,13 @@
+
 {{ config(
     materialized='incremental',
-    unique_key='product_id'
+    unique_key='review_id'  
 ) }}
 
 with 
 
 source as (
-    select * from {{ ref('stg_sql_server_dbo__products') }}
-    JOIN {{ ref('stg_sql_server_dbo__category') }} USING (category_id)
+    select * from {{ ref('stg_google_sheets__reviews') }}
     {% if is_incremental() %}
         where llegada_id > (select max(llegada_id) from {{ this }})
     {% endif %}
@@ -15,11 +15,12 @@ source as (
 
 renamed as (
     select
+        review_id,
+        user_id,
         product_id,
-        precio,
-        nombre_producto,
-        category,
-        inventory,
+        rating,
+        comments,
+        created_at,
         llegada_id
     from source
 )

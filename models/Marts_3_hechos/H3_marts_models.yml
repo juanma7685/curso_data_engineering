@@ -1,0 +1,198 @@
+version: 2
+
+models:
+  - name: H3_facts_orders
+    description: "Tabla de hechos de órdenes"
+    columns:
+      - name: order_id
+        description: "ID de la orden"
+      - name: address_id
+        description: "ID de la dirección"
+      - name: user_id
+        description: "ID del usuario"
+
+  - name: H3_facts_order_items
+    description: "Tabla de hechos de ítems de órdenes"
+    columns:
+      - name: order_items_id
+        description: "ID del ítem de la orden"
+      - name: order_id
+        description: "ID de la orden"
+      - name: product_id
+        description: "ID del producto"
+      - name: quantity
+        description: "Cantidad"
+      - name: llegada_id
+        description: "ID de llegada"
+
+  - name: H3_facts_events
+    description: "Tabla de hechos de eventos"
+    columns:
+      - name: event_id
+        description: "ID del evento"
+      - name: page_url
+        description: "URL de la página"
+      - name: event_type
+        description: "Tipo de evento"
+      - name: user_id
+        description: "ID del usuario"
+      - name: product_id
+        description: "ID del producto"
+      - name: session_id
+        description: "ID de la sesión"
+      - name: created_at
+        description: "Fecha de creación"
+
+  - name: H3_dim_users
+    description: "Tabla de dimensión de usuarios"
+    columns:
+      - name: user_id
+        description: "ID del usuario"
+      - name: updated_at
+        description: "Fecha de actualización"
+      - name: address_id
+        description: "ID de la dirección"
+      - name: last_name
+        description: "Apellido"
+      - name: created_at
+        description: "Fecha de creación"
+      - name: phone_number
+        description: "Número de teléfono"
+      - name: first_name
+        description: "Nombre"
+      - name: email
+        description: "Correo electrónico"
+
+  - name: H3_dim_reviews
+    description: "Tabla de dimensión de reseñas"
+    columns:
+      - name: review_id
+        description: "ID de la reseña"
+      - name: user_id
+        description: "ID del usuario"
+      - name: product_id
+        description: "ID del producto"
+      - name: rating
+        description: "Calificación"
+      - name: comments
+        description: "Comentarios"
+      - name: created_at
+        description: "Fecha de creación"
+      - name: llegada_id
+        description: "ID de llegada"
+
+  - name: H3_dim_returns
+    description: "Tabla de dimensión de devoluciones"
+    columns:
+      - name: return_id
+        description: "ID de la devolución"
+      - name: order_id
+        description: "ID de la orden"
+      - name: user_id
+        description: "ID del usuario"
+      - name: return_date
+        description: "Fecha de devolución"
+      - name: llegada_id
+        description: "ID de llegada"
+
+  - name: H3_dim_products
+    description: "Tabla de dimensión de productos"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: precio
+        description: "Precio"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: category
+        description: "Categoría"
+      - name: inventory
+        description: "Inventario"
+
+  - name: H3_dim_orders
+    description: "Tabla de dimensión de órdenes"
+    columns:
+      - name: order_id
+        description: "ID de la orden"
+      - name: shipping_service
+        description: "Servicio de envío"
+      - name: shipping_cost
+        description: "Costo de envío"
+      - name: created_at
+        description: "Fecha de creación"
+      - name: estimated_delivery_at
+        description: "Fecha estimada de entrega"
+      - name: nombre_promocion
+        description: "Nombre de la promoción"
+      - name: EUR_discount
+        description: "Descuento en euros"
+      - name: promo_estado
+        description: "Estado de la promoción"
+      - name: order_status
+        description: "Estado de la orden"
+      - name: order_cost
+        description: "Costo de la orden"
+      - name: order_total
+        description: "Total de la orden"
+      - name: delivered_at
+        description: "Fecha de entrega"
+      - name: tracking_id
+        description: "ID de seguimiento"
+      - name: llegada_id
+        description: "ID de llegada"
+
+  - name: H3_dim_fecha
+    description: "Tabla de dimensión de fechas"
+    columns:
+      - name: date_day
+        description: "Día de la fecha"
+      - name: year
+        description: "Año"
+      - name: month
+        description: "Mes"
+      - name: day
+        description: "Día"
+      - name: week
+        description: "Semana"
+      - name: day_of_week
+        description: "Día de la semana"
+      - name: day_of_year
+        description: "Día del año"
+      - name: quarter
+        description: "Trimestre"
+      - name: day_type
+        description: "Tipo de día"
+      - name: day_name
+        description: "Nombre del día"
+
+  - name: H3_dim_budget
+    description: "Tabla de dimensión de presupuesto"
+    columns:
+      - name: budget_id
+        description: "ID del presupuesto"
+      - name: product_id
+        description: "ID del producto"
+      - name: quantity
+        description: "Cantidad"
+      - name: mes
+        description: "Mes"
+      - name: anyo
+        description: "Año"
+
+  - name: H3_dim_addresses
+    description: "Tabla de dimensión de direcciones"
+    columns:
+      - name: address_id
+        description: "ID de la dirección"
+      - name: zipcode
+        description: "Código postal"
+      - name: country
+        description: "País"
+      - name: address
+        description: "Dirección"
+      - name: street
+        description: "Calle"
+      - name: address_number
+        description: "Número de dirección"
+      - name: state
+        description: "Estado"
