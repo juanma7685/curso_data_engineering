@@ -31,25 +31,25 @@ models:
     staging:
       +database: "ALUMNO11_DEV_SILVER_DB"
       +schema: "staging"
-      +materialized: view
+      +materialized: table
 
     # Configuration for marts models
-    Marts_3_hechos:
+    Core_3_hechos:
       +database: "ALUMNO11_DEV_GOLD_DB"
-      +schema: "Marts_3_hechos"
+      +schema: "Core_3_hechos"
       +materialized: table
-      Core:
+      Marts:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
       Producto:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
       Promociones:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
 
-    Marts_2_hechos:  # Configuración para la carpeta principal
+    Core_2_hechos:  # Configuración para la carpeta principal
       +database: "ALUMNO11_DEV_GOLD_DB"
-      +schema: "Marts_2_hechos"
+      +schema: "Core_2_hechos"
       +materialized: table
-      Core:
+      Marts:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
       Producto:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta

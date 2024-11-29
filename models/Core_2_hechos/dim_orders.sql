@@ -8,9 +8,9 @@ with
 -- Filtra datos incrementales antes de las uniones
 filtered_orders as (
     select * 
-    from {{ ref('stg_sql_server_dbo__orders') }} o
+    from {{ ref('stg_sql_server_dbo__orders') }}
     {% if is_incremental() %}
-        where o.llegada_id > (select max(o.llegada_id) from {{ this }})
+        where llegada_id > (select max(llegada_id) from {{ this }})
     {% endif %}
 ),
 

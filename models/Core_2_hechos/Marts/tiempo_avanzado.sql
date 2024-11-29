@@ -1,3 +1,4 @@
+
 WITH ventas_por_tiempo AS (
     SELECT
         df.month AS mes,

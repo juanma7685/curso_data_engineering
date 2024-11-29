@@ -1,3 +1,10 @@
+{{
+  config(
+    materialized='incremental',
+    unique_key='event_id'
+  )
+}}
+
 with 
 
 source as (
@@ -27,3 +34,7 @@ renamed as (
 )
 
 select * from renamed
+
+{% if is_incremental() %}
+where llegada_id > (select max(llegada_id) from {{ this }})
+{% endif %}
