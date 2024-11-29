@@ -6,9 +6,9 @@ source as (
 
 renamed as (
     select
-        user_id,
+        {{ dbt_utils.generate_surrogate_key(["email"]) }} as user_id,
         CAST(updated_at AS DATE) as updated_at,
-        address_id,
+        {{ dbt_utils.generate_surrogate_key(["address", "zipcode", "country", "state"]) }} as address_id,
         last_name,
         CAST(created_at AS DATE) as created_at,
         phone_number,

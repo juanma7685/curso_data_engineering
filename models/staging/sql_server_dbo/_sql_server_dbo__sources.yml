@@ -2,211 +2,131 @@ version: 2
 
 sources:
   - name: sql_server_dbo
+    description: "Fuentes de datos principales"
     schema: sql_server_dbo
-    description: ""
     database: "ALUMNO11_DEV_BRONZE_DB"
     tables:
       - name: addresses
-        description: ""
+        description: "Direcciones con información geográfica y códigos postales"
         columns:
-          - name: address_id
-            data_type: varchar
-            description: ""
-          - name: zipcode
-            data_type: number
-            description: ""
-          - name: country
-            data_type: varchar
-            description: ""
-          - name: address
-            data_type: varchar
-            description: ""
-          - name: state
-            data_type: varchar
-            description: ""
-          - name: _DLT_LOAD_ID
-            data_type: varchar
-            description: "Load ID for Delta Lake"
-          - name: _DLT_ID
-            data_type: varchar
-            description: "ID for Delta Lake"
-
-      - name: events
-        description: ""
-        columns:
-          - name: event_id
-            data_type: varchar
-            description: ""
-          - name: page_url
-            data_type: varchar
-            description: ""
-          - name: event_type
-            data_type: varchar
-            description: ""
-          - name: user_id
-            data_type: varchar
-            description: ""
-          - name: product_id
-            data_type: varchar
-            description: ""
-          - name: session_id
-            data_type: varchar
-            description: ""
-          - name: created_at
-            data_type: timestamp_ntz
-            description: ""
-          - name: order_id
-            data_type: varchar
-            description: ""
-          - name: _DLT_LOAD_ID
-            data_type: varchar
-            description: "Load ID for Delta Lake"
-          - name: _DLT_ID
-            data_type: varchar
-            description: "ID for Delta Lake"
-
-      - name: order_items
-        description: ""
-        columns:
-          - name: order_id
-            data_type: varchar
-            description: ""
-          - name: product_id
-            data_type: varchar
-            description: ""
-          - name: quantity
-            data_type: number
-            description: ""
-          - name: _DLT_LOAD_ID
-            data_type: varchar
-            description: "Load ID for Delta Lake"
-          - name: _DLT_ID
-            data_type: varchar
-            description: "ID for Delta Lake"
-
-      - name: orders
-        description: ""
-        columns:
-          - name: order_id
-            data_type: varchar
-            description: ""
-          - name: shipping_service
-            data_type: varchar
-            description: ""
-          - name: shipping_cost
-            data_type: float
-            description: ""
-          - name: address_id
-            data_type: varchar
-            description: ""
-          - name: created_at
-            data_type: timestamp_tz
-            description: ""
-          - name: promo_id
-            data_type: varchar
-            description: ""
-          - name: estimated_delivery_at
-            data_type: timestamp_tz
-            description: ""
-          - name: order_cost
-            data_type: float
-            description: ""
-          - name: user_id
-            data_type: varchar
-            description: ""
-          - name: order_total
-            data_type: float
-            description: ""
-          - name: delivered_at
-            data_type: timestamp_tz
-            description: ""
-          - name: tracking_id
-            data_type: varchar
-            description: ""
-          - name: status
-            data_type: varchar
-            description: ""
-          - name: _DLT_LOAD_ID
-            data_type: varchar
-            description: "Load ID for Delta Lake"
-          - name: _DLT_ID
-            data_type: varchar
-            description: "ID for Delta Lake"
-
-      - name: products
-        description: ""
-        columns:
-          - name: product_id
-            data_type: varchar
-            description: ""
-          - name: price
-            data_type: float
-            description: ""
-          - name: name
-            data_type: varchar
-            description: ""
-          - name: inventory
-            data_type: number
-            description: ""
-          - name: _DLT_LOAD_ID
-            data_type: varchar
-            description: "Load ID for Delta Lake"
-          - name: _DLT_ID
-            data_type: varchar
-            description: "ID for Delta Lake"
-
-      - name: promos
-        description: ""
-        columns:
-          - name: promo_id
-            data_type: varchar
-            description: ""
-          - name: discount
-            data_type: number
-            description: ""
-          - name: status
-            data_type: varchar
-            description: ""
-          - name: _DLT_LOAD_ID
-            data_type: varchar
-            description: "Load ID for Delta Lake"
-          - name: _DLT_ID
-            data_type: varchar
-            description: "ID for Delta Lake"
-
+          - name: ZIPCODE
+            description: "Código postal de la dirección"
+          - name: COUNTRY
+            description: "País de la dirección"
+          - name: ADDRESS
+            description: "Dirección específica (calle y número)"
+          - name: STATE
+            description: "Estado o región de la dirección"
       - name: users
-        description: ""
+        description: "Información de los usuarios incluyendo datos de contacto y dirección"
         columns:
-          - name: user_id
-            data_type: varchar
-            description: ""
-          - name: updated_at
-            data_type: timestamp_tz
-            description: ""
-          - name: address_id
-            data_type: varchar
-            description: ""
-          - name: last_name
-            data_type: varchar
-            description: ""
-          - name: created_at
-            data_type: timestamp_tz
-            description: ""
-          - name: phone_number
-            data_type: varchar
-            description: ""
-          - name: total_orders
-            data_type: number
-            description: ""
-          - name: first_name
-            data_type: varchar
-            description: ""
-          - name: email
-            data_type: varchar
-            description: ""
-          - name: _DLT_LOAD_ID
-            data_type: varchar
-            description: "Load ID for Delta Lake"
-          - name: _DLT_ID
-            data_type: varchar
-            description: "ID for Delta Lake"
+          - name: EMAIL
+            description: "Correo electrónico único del usuario"
+          - name: UPDATED_AT
+            description: "Última actualización del perfil del usuario"
+          - name: ADDRESS
+            description: "Dirección asociada al usuario"
+          - name: ZIPCODE
+            description: "Código postal de la dirección del usuario"
+          - name: COUNTRY
+            description: "País asociado al usuario"
+          - name: STATE
+            description: "Estado o región asociado al usuario"
+          - name: LAST_NAME
+            description: "Apellido del usuario"
+          - name: CREATED_AT
+            description: "Fecha de creación del perfil del usuario"
+          - name: PHONE_NUMBER
+            description: "Número de teléfono único del usuario"
+          - name: TOTAL_ORDERS
+            description: "Cantidad total de pedidos realizados por el usuario"
+          - name: FIRST_NAME
+            description: "Nombre del usuario"
+      - name: products
+        description: "Productos disponibles con sus categorías y precios"
+        columns:
+          - name: NAME
+            description: "Nombre del producto"
+          - name: CATEGORY
+            description: "Categoría a la que pertenece el producto"
+          - name: PRICE
+            description: "Precio del producto en euros"
+          - name: INVENTORY
+            description: "Cantidad disponible en inventario"
+      - name: promos
+        description: "Promociones activas e inactivas con sus respectivos descuentos"
+        columns:
+          - name: PROMO_ID
+            description: "Identificador único de la promoción"
+          - name: DISCOUNT
+            description: "Descuento en euros ofrecido por la promoción"
+          - name: STATUS
+            description: "Estado de la promoción (activa o inactiva)"
+      - name: orders
+        description: "Pedidos realizados por los usuarios, vinculados a promociones y direcciones"
+        columns:
+          - name: ORDER_ID
+            description: "Identificador único del pedido"
+          - name: SHIPPING_SERVICE
+            description: "Servicio de envío utilizado para el pedido"
+          - name: SHIPPING_COST
+            description: "Costo del envío en euros"
+          - name: ZIPCODE
+            description: "Código postal de la dirección de envío"
+          - name: COUNTRY
+            description: "País asociado al pedido"
+          - name: ADDRESS
+            description: "Dirección específica de envío del pedido"
+          - name: STATE
+            description: "Estado o región de la dirección de envío"
+          - name: EMAIL
+            description: "Correo electrónico del usuario que realizó el pedido"
+          - name: CREATED_AT
+            description: "Fecha de creación del pedido"
+          - name: PROMO_ID
+            description: "Identificador de la promoción aplicada al pedido"
+          - name: ESTIMATED_DELIVERY_AT
+            description: "Fecha estimada de entrega del pedido"
+          - name: ORDER_COST
+            description: "Costo total del pedido (sin incluir envío)"
+          - name: ORDER_TOTAL
+            description: "Costo total del pedido (incluyendo envío)"
+          - name: DELIVERED_AT
+            description: "Fecha de entrega del pedido (si aplica)"
+          - name: TRACKING_ID
+            description: "Identificador único para rastrear el pedido"
+          - name: STATUS
+            description: "Estado actual del pedido (preparando, enviado, entregado, etc.)"
+      - name: order_items
+        description: "Productos incluidos en cada pedido con cantidad específica"
+        columns:
+          - name: ORDER_ID
+            description: "Identificador único del pedido"
+          - name: NAME
+            description: "Nombre del producto incluido en el pedido"
+          - name: CATEGORY
+            description: "Categoría del producto"
+          - name: QUANTITY
+            description: "Cantidad del producto incluido en el pedido"
+          
+      - name: events
+        description: "Eventos relacionados con la actividad de usuarios y productos"
+        columns:
+          - name: EVENT_ID
+            description: "Identificador único del evento"
+          - name: PAGE_URL
+            description: "URL asociada al evento"
+          - name: EVENT_TYPE
+            description: "Tipo de evento registrado (ej.: add_to_cart, checkout)"
+          - name: EMAIL
+            description: "Correo electrónico del usuario relacionado con el evento"
+          - name: NAME
+            description: "Nombre del producto asociado al evento (si aplica)"
+          - name: CATEGORY
+            description: "Categoría del producto asociado al evento (si aplica)"
+          - name: SESSION_ID
+            description: "Identificador único de la sesión del usuario"
+          - name: CREATED_AT
+            description: "Fecha en la que ocurrió el evento"
+          - name: ORDER_ID
+            description: "Identificador del pedido asociado al evento (si aplica)"

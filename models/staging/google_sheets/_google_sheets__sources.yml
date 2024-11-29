@@ -3,28 +3,49 @@ version: 2
 sources:
   - name: google_sheets
     schema: google_sheets
-    description: ""
     database: "ALUMNO11_DEV_BRONZE_DB"
-
+    description: "Fuentes adicionales como presupuestos, reseñas y devoluciones"
     tables:
       - name: budget
-        description: ""
+        description: "Presupuesto mensual asignado por producto"
         columns:
-          - name: _row
-            data_type: number
-            description: ""
-          - name: quantity
-            data_type: number
-            description: ""
-          - name: month
-            data_type: date
-            description: ""
-          - name: product_id
-            data_type: varchar
-            description: ""
-          - name: _DLT_LOAD_ID
-            data_type: varchar
-            description: "Load ID for Delta Lake"
-          - name: _DLT_ID
-            data_type: varchar
-            description: "ID for Delta Lake"
+          - name: _ROW
+            description: "Número único de fila para identificar presupuestos"
+          - name: QUANTITY
+            description: "Cantidad presupuestada para el producto"
+          - name: MONTH
+            description: "Mes del presupuesto"
+          - name: NAME
+            description: "Nombre del producto presupuestado"
+          - name: CATEGORY
+            description: "Categoría del producto presupuestado"
+      - name: reviews
+        description: "Reseñas de usuarios sobre productos con calificaciones y comentarios"
+        columns:
+          - name: REVIEW_ID
+            description: "Identificador único de la reseña"
+          - name: EMAIL
+            description: "Correo electrónico del usuario que realizó la reseña"
+          - name: NAME
+            description: "Nombre del producto reseñado"
+          - name: CATEGORY
+            description: "Categoría del producto reseñado"
+          - name: RATING
+            description: "Calificación del producto (de 1 a 5)"
+          - name: COMMENTS
+            description: "Comentarios del usuario sobre el producto"
+          - name: CREATED_AT
+            description: "Fecha en la que se realizó la reseña"
+      - name: returns
+        description: "Devoluciones de pedidos con motivos específicos y fechas"
+        columns:
+          - name: RETURN_ID
+            description: "Identificador único de la devolución"
+          - name: ORDER_ID
+            description: "Identificador único del pedido devuelto"
+          - name: EMAIL
+            description: "Correo electrónico del usuario que realizó la devolución"
+          - name: REASON
+            description: "Motivo de la devolución"
+          - name: RETURN_DATE
+            description: "Fecha en la que se realizó la devolución"

@@ -9,9 +9,9 @@ source as (
 renamed as (
 
     select
-        {{ dbt_utils.generate_surrogate_key(['order_id','product_id']) }} as order_items_id,
+        {{ dbt_utils.generate_surrogate_key(["order_id","name","category"]) }} as order_items_id,
         order_id,
-        product_id,
+        {{ dbt_utils.generate_surrogate_key(["name","category"]) }} as product_id,
         quantity,
         _DLT_LOAD_ID as llegada_id
 

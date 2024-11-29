@@ -6,8 +6,8 @@ source as (
 
 renamed as (
     select
-        {{ dbt_utils.generate_surrogate_key(["COALESCE(NULLIF(shipping_service, ''), 'Waiting')"]) }} as shipping_service_id,
-        COALESCE(NULLIF(shipping_service, ''), 'Waiting') as shipping_service
+        {{ dbt_utils.generate_surrogate_key(["shipping_service"]) }} as shipping_service_id,
+        shipping_service
     from source
 )
 
