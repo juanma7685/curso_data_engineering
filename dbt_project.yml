@@ -34,7 +34,7 @@ models:
       +materialized: table
 
     # Configuration for marts models
-    Core_3_hechos:
+    Marts_3_hechos:
       +database: "ALUMNO11_DEV_GOLD_DB"
       +schema: "Core_3_hechos"
       +materialized: table
@@ -45,7 +45,7 @@ models:
       Promociones:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
 
-    Core_2_hechos:  # Configuración para la carpeta principal
+    Marts_2_hechos:  # Configuración para la carpeta principal
       +database: "ALUMNO11_DEV_GOLD_DB"
       +schema: "Core_2_hechos"
       +materialized: table
