@@ -2,7 +2,7 @@ WITH ordenes_ventas_agrupadas AS (
     SELECT
         TO_CHAR(DATE_FROM_PARTS(df.year, df.month, 1), 'Month') AS mes,
         df.year AS anyo,
-        COUNT(DISTINCT fo.order_id) AS total_ordenes,
+        COUNT(fo.order_id) AS total_ordenes,
         SUM(do.order_total) AS valor_total_ventas
     FROM
         {{ ref('H3_facts_orders') }} fo

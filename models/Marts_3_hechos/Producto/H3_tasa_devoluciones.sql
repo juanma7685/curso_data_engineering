@@ -1,27 +1,23 @@
 WITH devoluciones AS (
     SELECT
-        dp.product_id,
+        fo.product_id,
         COUNT(dr.return_id) as devoluciones
     FROM
         {{ ref('H3_dim_returns') }} dr
     JOIN
-        {{ ref('H3_facts_orders') }} fo
+        {{ ref('H3_facts_order_items') }} fo
     ON
         dr.order_id = fo.order_id
-    JOIN
-        {{ ref('H3_dim_products') }} dp
-    ON
-        fo.product_id = dp.product_id
     GROUP BY
-        dp.product_id
+        fo.product_id
 ),
 
 total_producto_orders AS (
     SELECT
         dp.product_id,
-        COUNT(fo.order_id) as total_ordenes
+        COUNT(DISTINCT fo.order_id) as total_ordenes
     FROM
-        {{ ref('H3_facts_orders') }} fo
+        {{ ref('H3_facts_order_items') }} fo
     JOIN
         {{ ref('H3_dim_products') }} dp
     ON

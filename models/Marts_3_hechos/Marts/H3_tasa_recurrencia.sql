@@ -1,7 +1,7 @@
 WITH usuarios_ordenes AS (
     SELECT
         fo.user_id,
-        COUNT(DISTINCT fo.order_id) AS total_ordenes
+        COUNT(fo.order_id) AS total_ordenes
     FROM
         {{ ref('H3_facts_orders') }} fo
     GROUP BY

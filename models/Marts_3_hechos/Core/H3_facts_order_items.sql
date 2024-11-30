@@ -15,10 +15,11 @@ source_order_items as (
 facts_order_items as (
     select
         oi.order_items_id,
+        oi.order_id,
         oi.product_id,
         oi.quantity,
         oi.llegada_id
     from source_order_items oi 
 )
 
-select * from facts_orders
+select * from facts_order_items
