@@ -4,7 +4,7 @@ WITH facturacion_por_producto AS (
         SUM(dp.precio * fo.quantity) AS total_facturado,
         SUM(fo.quantity) AS total_vendido
     FROM
-        {{ ref('H3_facts_orders') }} fo
+        {{ ref('H3_facts_order_items') }} fo
     JOIN
         {{ ref('H3_dim_products') }} dp
     ON

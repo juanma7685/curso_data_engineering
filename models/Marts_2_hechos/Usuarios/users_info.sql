@@ -1,3 +1,4 @@
+
 WITH user_data AS (
     SELECT 
         u.user_id,
@@ -18,6 +19,7 @@ WITH user_data AS (
         {{ ref('dim_orders') }} d ON o.order_id = d.order_id -- Agregado para usar columnas de `dim_orders`
     GROUP BY 
         u.user_id, u.first_name, u.last_name, u.email
+    ORDER BY total_orders DESC
 )
 
 SELECT * 
