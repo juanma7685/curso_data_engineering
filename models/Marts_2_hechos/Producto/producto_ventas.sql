@@ -2,7 +2,8 @@
 WITH facturacion_por_producto AS (
     SELECT
         dp.product_id,
-        SUM(dp.precio * fo.quantity) AS total_facturado
+        SUM(dp.precio * fo.quantity) AS total_facturado,
+        SUM(fo.quantity) AS total_vendido
     FROM
         {{ ref('facts_orders') }} fo
     JOIN
@@ -18,7 +19,8 @@ producto_max_facturacion AS (
         dp.nombre_producto,
         dp.category,
         dp.precio,
-        total_facturado
+        total_facturado,
+        total_vendido
         FROM facturacion_por_producto
         JOIN {{ ref('dim_products') }} dp
         ON facturacion_por_producto.product_id = dp.product_id
