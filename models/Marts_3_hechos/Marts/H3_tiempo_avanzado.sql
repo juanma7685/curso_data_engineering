@@ -24,7 +24,7 @@ ventas_agregadas AS (
 )
 
 SELECT
-    mes,
+    TO_CHAR(DATE_FROM_PARTS(1, mes, 1), 'Month') AS Meses,
     trimestre,
     ventas_totales_mes,
     ventas_totales_trimestre,
