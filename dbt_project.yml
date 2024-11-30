@@ -56,6 +56,9 @@ models:
       Promociones:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
 
+snapshots:
+    +target_database: "ALUMNO11_DEV_GOLD_DB"  # Base de datos donde se guardarán los snapshots
+
 seeds:
   +database: "ALUMNO11_DEV_BRONZE_DB"
   +schema: "SEEDS"
