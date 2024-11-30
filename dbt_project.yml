@@ -36,24 +36,32 @@ models:
     # Configuration for marts models
     Marts_3_hechos:
       +database: "ALUMNO11_DEV_GOLD_DB"
-      +schema: "Core_3_hechos"
+      +schema: "Marts_3_hechos"
       +materialized: table
       Marts:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
       Producto:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
       Promociones:
+        +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
+      Logistica:
+        +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
+      Usuarios:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
 
     Marts_2_hechos:  # Configuración para la carpeta principal
       +database: "ALUMNO11_DEV_GOLD_DB"
-      +schema: "Core_2_hechos"
+      +schema: "Marts_2_hechos"
       +materialized: table
       Marts:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
       Producto:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
       Promociones:
+        +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
+      Logistica:
+        +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
+      Usuarios:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
 
 snapshots:
