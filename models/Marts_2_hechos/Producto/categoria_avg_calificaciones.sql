@@ -1,7 +1,8 @@
 WITH calificaciones_categoria AS (
     SELECT
         dp.category,
-        AVG(dr.rating) AS promedio_calificacion
+        AVG(dr.rating) AS promedio_calificacion,
+        COUNT(dr.rating) AS numero_calificaciones
     FROM
         {{ ref('dim_reviews') }} dr
     JOIN

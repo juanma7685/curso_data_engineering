@@ -1,7 +1,7 @@
-
-WITH ventas_por_categoria AS (
+WITH facturacion_por_categoria AS (
     SELECT
         dp.category,
+        SUM(dp.precio * fo.quantity) AS total_facturado,
         SUM(fo.quantity) AS total_vendido
     FROM
         {{ ref('facts_orders') }} fo
@@ -11,11 +11,12 @@ WITH ventas_por_categoria AS (
         fo.product_id = dp.product_id
     GROUP BY dp.category
 ),
-categoria_max_ventas AS (
+categoria_max_facturacion AS (
     SELECT
         category,
+        total_facturado,
         total_vendido
-    FROM ventas_por_categoria
-    ORDER BY total_vendido DESC
+    FROM facturacion_por_categoria
+    ORDER BY total_facturado DESC
 )
-SELECT * FROM categoria_max_ventas
+SELECT * FROM categoria_max_facturacion
