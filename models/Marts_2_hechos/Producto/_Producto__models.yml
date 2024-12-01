@@ -16,7 +16,7 @@ models:
       - name: tasa_devoluciones
         description: "Tasa de devoluciones del producto"
 
-  - name: Rating_historico
+  - name: rating_historico
     description: "Tabla que compara las calificaciones actuales e históricas de los productos"
     columns:
       - name: product_id
@@ -54,7 +54,7 @@ models:
       - name: total_vendido
         description: "Total vendido del producto"
 
-  - name: Precio_historico
+  - name: precio_historico
     description: "Tabla que muestra la diferencia de precio histórica de los productos"
     columns:
       - name: product_id
