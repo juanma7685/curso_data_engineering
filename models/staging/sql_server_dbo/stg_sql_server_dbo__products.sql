@@ -25,7 +25,7 @@ renamed as (
 
 no_products as (
     select distinct
-        {{ dbt_utils.generate_surrogate_key(["'no products'", "'no products'"]) }} as product_id,
+        {{ dbt_utils.generate_surrogate_key(["null", "null"]) }} as product_id,
         0 as precio,
         'no products' as nombre_producto,
         {{ dbt_utils.generate_surrogate_key(["'no products'"]) }} as category_id,

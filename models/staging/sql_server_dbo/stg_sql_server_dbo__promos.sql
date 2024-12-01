@@ -27,7 +27,7 @@ renamed as (
 -- 3. Promos predeterminadas
 no_promos as (
     select distinct
-        {{ dbt_utils.generate_surrogate_key(["'no promo'"]) }} as promo_id,
+        {{ dbt_utils.generate_surrogate_key(["null"]) }} as promo_id,
         'no promo' as name,
         null as EUR_discount,
         null as status,
