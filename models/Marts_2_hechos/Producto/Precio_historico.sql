@@ -9,6 +9,7 @@ SELECT
 FROM {{ ref("dim_products") }} dp
 INNER JOIN {{ ref("products_snapshot") }} ps 
 ON dp.product_id = ps.product_id
+WHERE price_difference > 0
 ORDER BY price_difference DESC
 
 )
