@@ -17,6 +17,6 @@ select
     comments,
     created_at,
     r.llegada_id
-from {{ ref('stg_sql_server_dbo__reviews') }} r
+from {{ ref('stg_google_sheets__reviews') }} r
 
 {% endsnapshot %}
