@@ -1,0 +1,21 @@
+
+version: 2
+
+models:
+  - name: H3_tasa_ordenes_con_promos
+    description: "Tabla que calcula la tasa de órdenes con promociones"
+    columns:
+      - name: tasa_ordenes_promocion
+        description: "Proporción de órdenes que tienen algún tipo de descuento aplicado"
+
+  - name: H3_desempeno_promociones
+    description: "Tabla que evalúa el desempeño de las promociones"
+    columns:
+      - name: nombre_promocion
+        description: "Nombre de la promoción aplicada"
+      - name: numero_ordenes_afectadas
+        description: "Número de órdenes que fueron afectadas por la promoción"
+      - name: total_descuentos
+        description: "Suma total de los descuentos aplicados por la promoción"
+      - name: gasto_promedio_por_orden
+        description: "Gasto promedio por orden en las órdenes que tuvieron algún descuento"

@@ -1,0 +1,49 @@
+
+version: 2
+
+models:
+  - name: H3_tiempo_promedio_entrega
+    description: "Modelo que calcula el tiempo promedio de entrega en días."
+    columns:
+      - name: tiempo_promedio_entrega
+        description: "Tiempo promedio de entrega en días."
+
+  - name: H3_porcentaje_entregas_tardias
+    description: "Modelo que calcula el porcentaje de entregas tardías."
+    columns:
+      - name: porcentaje_entregas_tardias
+        description: "Porcentaje de entregas que se realizaron después de la fecha estimada de entrega."
+
+  - name: H3_Inventario_promedio_categoria
+    description: "Modelo que calcula el inventario promedio por categoría de producto."
+    columns:
+      - name: category
+        description: "Categoría del producto."
+      - name: inventario_promedio
+        description: "Inventario promedio de productos en la categoría."
+
+  - name: H3_entregas_a_tiempo
+    description: "Modelo que calcula la tasa de entregas a tiempo."
+    columns:
+      - name: tasa_entregas_tiempo
+        description: "Proporción de entregas que se realizaron a tiempo."
+
+  - name: H3_eficiencia_envios
+    description: "Modelo que calcula la eficiencia de los envíos."
+    columns:
+      - name: shipping_service
+        description: "Servicio de envío utilizado."
+      - name: total_envios
+        description: "Número total de envíos realizados."
+      - name: costo_envio_total
+        description: "Costo total de los envíos."
+      - name: costo_envio_promedio
+        description: "Costo promedio de los envíos."
+      - name: promedio_tiempo_entrega
+        description: "Tiempo promedio de entrega en días."
+
+  - name: H3_coste_promedio_envio
+    description: "Modelo que calcula el costo promedio de envío."
+    columns:
+      - name: costo_promedio_envio
+        description: "Costo promedio de envío."

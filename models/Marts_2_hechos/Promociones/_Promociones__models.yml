@@ -1,0 +1,21 @@
+
+version: 2
+
+models:
+  - name: tasa_ordenes_con_promos
+    description: "Tasa de órdenes que utilizan promociones"
+    columns:
+      - name: tasa_ordenes_promocion
+        description: "Proporción de órdenes que utilizaron alguna promoción"
+
+  - name: desempeno_promociones
+    description: "Desempeño de las promociones en términos de órdenes y descuentos"
+    columns:
+      - name: nombre_promocion
+        description: "Nombre de la promoción"
+      - name: numero_ordenes_afectadas
+        description: "Número de órdenes que fueron afectadas por la promoción"
+      - name: total_descuentos
+        description: "Suma total de los descuentos aplicados por la promoción"
+      - name: gasto_promedio_por_orden
+        description: "Gasto promedio por orden para las órdenes que utilizaron la promoción"

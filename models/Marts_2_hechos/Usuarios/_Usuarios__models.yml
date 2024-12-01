@@ -1,0 +1,51 @@
+
+version: 2
+
+models:
+  - name: usuarios_activos
+    description: "Tabla que contiene el número de usuarios activos por mes y año."
+    columns:
+      - name: mes
+        description: "Mes en el que se registraron los eventos."
+      - name: anyo
+        description: "Año en el que se registraron los eventos."
+      - name: usuarios_activos
+        description: "Número de usuarios activos en el mes y año especificados."
+
+  - name: users_info
+    description: "Tabla que contiene información detallada de los usuarios y sus compras."
+    columns:
+      - name: user_id
+        description: "Identificador único del usuario."
+      - name: first_name
+        description: "Nombre del usuario."
+      - name: last_name
+        description: "Apellido del usuario."
+      - name: email
+        description: "Correo electrónico del usuario."
+      - name: total_orders
+        description: "Número total de órdenes realizadas por el usuario."
+      - name: total_spent
+        description: "Cantidad total gastada por el usuario."
+      - name: total_shipping_cost
+        description: "Costo total de envío pagado por el usuario."
+      - name: total_discount
+        description: "Descuento total aplicado a las órdenes del usuario."
+      - name: total_products_bought
+        description: "Número total de productos comprados por el usuario."
+      - name: total_unique_products_bought
+        description: "Número total de productos únicos comprados por el usuario."
+
+  - name: avg_revisiones_usuario
+    description: "Tabla que contiene la calificación promedio de los usuarios."
+    columns:
+      - name: user_id
+        description: "Identificador único del usuario."
+      - name: first_name
+        description: "Nombre del usuario."
+      - name: last_name
+        description: "Apellido del usuario."
+      - name: email
+        description: "Correo electrónico del usuario."
+      - name: calificacion_promedio
+        description: "Calificación promedio de las revisiones realizadas por el usuario."

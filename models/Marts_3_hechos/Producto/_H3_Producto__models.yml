@@ -1,0 +1,67 @@
+
+version: 2
+
+models:
+  - name: H3_tasa_devoluciones
+    description: "Tabla que muestra la tasa de devoluciones por producto"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: category
+        description: "Categoría del producto"
+      - name: precio
+        description: "Precio del producto"
+      - name: tasa_devoluciones
+        description: "Tasa de devoluciones del producto"
+
+  - name: H3_producto_ventas
+    description: "Tabla que muestra las ventas por producto"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: category
+        description: "Categoría del producto"
+      - name: precio
+        description: "Precio del producto"
+      - name: total_facturado
+        description: "Total facturado por producto"
+      - name: total_vendido
+        description: "Total vendido por producto"
+
+  - name: H3_categoria_ventas
+    description: "Tabla que muestra las ventas por categoría"
+    columns:
+      - name: category
+        description: "Categoría del producto"
+      - name: total_facturado
+        description: "Total facturado por categoría"
+      - name: total_vendido
+        description: "Total vendido por categoría"
+
+  - name: H3_categoria_avg_calificaciones
+    description: "Tabla que muestra la calificación promedio por categoría"
+    columns:
+      - name: category
+        description: "Categoría del producto"
+      - name: promedio_calificacion
+        description: "Calificación promedio por categoría"
+      - name: numero_calificaciones
+        description: "Número de calificaciones por categoría"
+
+  - name: H3_avg_revisiones_productos
+    description: "Tabla que muestra la calificación promedio por producto"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: category
+        description: "Categoría del producto"
+      - name: calificacion_promedio
+        description: "Calificación promedio del producto"
+      - name: numero_calificaciones
+        description: "Número de calificaciones del producto"
