@@ -29,13 +29,13 @@ models:
   my_new_project:
     # Configuration for staging models
     staging:
-      +database: "ALUMNO11_DEV_SILVER_DB"
+      +database: "{{ env_var('DBT_ENVIRONMENTS') }}_SILVER_DB"
       +schema: "staging"
       +materialized: table
 
     # Configuration for marts models
     Marts_3_hechos:
-      +database: "ALUMNO11_DEV_GOLD_DB"
+      +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
       +schema: "Marts_3_hechos"
       +materialized: table
       Marts:
@@ -50,7 +50,7 @@ models:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
 
     Marts_2_hechos:  # Configuración para la carpeta principal
-      +database: "ALUMNO11_DEV_GOLD_DB"
+      +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
       +schema: "Marts_2_hechos"
       +materialized: table
       Marts:
@@ -65,7 +65,7 @@ models:
         +materialized: view  # Sobrescribe para que los modelos sean vistas en esta subcarpeta
 
 snapshots:
-    +target_database: "ALUMNO11_DEV_GOLD_DB"  # Base de datos donde se guardarán los snapshots
+    +target_database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"  # Base de datos donde se guardarán los snapshots
 
 seeds:
   +database: "ALUMNO11_DEV_BRONZE_DB"

@@ -4,7 +4,7 @@ sources:
   - name: sql_server_dbo
     description: "Fuentes de datos principales"
     schema: sql_server_dbo
-    database: "ALUMNO11_DEV_BRONZE_DB"
+    database: "{{ env_var('DBT_ENVIRONMENTS') }}_BRONZE_DB"
     tables:
       - name: addresses
         description: "Direcciones con información geográfica y códigos postales"
