@@ -14,7 +14,7 @@ models:
       - name: porcentaje_entregas_tardias
         description: "Porcentaje de entregas que se realizaron después de la fecha estimada de entrega."
 
-  - name: H3_Inventario_promedio_categoria
+  - name: H3_inventario_promedio_categoria
     description: "Modelo que calcula el inventario promedio por categoría de producto."
     columns:
       - name: category
