@@ -1,4 +1,3 @@
-
 version: 2
 
 models:
@@ -101,3 +100,35 @@ models:
         description: "Calificación promedio del producto"
       - name: numero_calificaciones
         description: "Número de calificaciones del producto"
+
+  - name: ventas_estado_productos
+    description: "Tabla que muestra los estados y países más vendidos y facturados por producto"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: category
+        description: "Categoría del producto"
+      - name: estado_mas_vendido
+        description: "Estado donde más se vendió el producto"
+      - name: pais_mas_vendido
+        description: "País donde más se vendió el producto"
+      - name: estado_mas_facturado
+        description: "Estado donde más se facturó el producto"
+      - name: pais_mas_facturado
+        description: "País donde más se facturó el producto"
+
+  - name: ventas_estado_categorias
+    description: "Tabla que muestra los estados y países más vendidos y facturados por categoría"
+    columns:
+      - name: category
+        description: "Categoría del producto"
+      - name: estado_mas_vendido
+        description: "Estado donde más se vendió la categoría"
+      - name: pais_mas_vendido
+        description: "País donde más se vendió la categoría"
+      - name: estado_mas_facturado
+        description: "Estado donde más se facturó la categoría"
+      - name: pais_mas_facturado
+        description: "País donde más se facturó la categoría"
