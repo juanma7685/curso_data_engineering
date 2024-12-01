@@ -56,5 +56,6 @@ SELECT
     *
 FROM
     comparacion_reviews
+WHERE diferencia_calificacion_promedio > 0
 ORDER BY
     diferencia_calificacion_promedio DESC
