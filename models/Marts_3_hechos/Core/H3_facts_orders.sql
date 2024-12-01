@@ -14,10 +14,11 @@ source_orders as (
 
 facts_orders as (
     select
-        o.order_id,
-        o.address_id,
-        o.user_id,
-    from source_orders o
+        order_id,
+        address_id,
+        user_id,
+        llegada_id
+    from source_orders
 )
 
 select * from facts_orders

@@ -1,6 +1,6 @@
 {{ config(
     materialized='incremental',
-    unique_key='order_id'
+    unique_key='order_items_id'
 ) }}
 
 with 
@@ -14,12 +14,12 @@ source_order_items as (
 
 facts_order_items as (
     select
-        oi.order_items_id,
-        oi.order_id,
-        oi.product_id,
-        oi.quantity,
-        oi.llegada_id
-    from source_order_items oi 
+        order_items_id,
+        order_id,
+        product_id,
+        quantity,
+        llegada_id
+    from source_order_items  
 )
 
 select * from facts_order_items
