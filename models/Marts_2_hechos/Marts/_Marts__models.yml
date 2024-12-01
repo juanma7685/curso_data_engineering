@@ -1,0 +1,37 @@
+
+version: 2
+
+models:
+  - name: tiempo_avanzado
+    description: "Modelo que calcula las ventas totales por mes y trimestre, y sus variaciones."
+    columns:
+      - name: Meses
+        description: "Nombre del mes."
+      - name: trimestre
+        description: "Trimestre del año."
+      - name: ventas_totales_mes
+        description: "Ventas totales del mes."
+      - name: ventas_totales_trimestre
+        description: "Ventas totales del trimestre."
+      - name: variacion_mensual
+        description: "Variación de ventas respecto al mes anterior."
+      - name: variacion_trimestral
+        description: "Variación de ventas respecto al trimestre anterior."
+
+  - name: tasa_recurrencia
+    description: "Modelo que calcula la tasa de recurrencia de usuarios."
+    columns:
+      - name: tasa_recurrencia
+        description: "Proporción de usuarios que han realizado más de una orden."
+
+  - name: ordenes_ventas_mes
+    description: "Modelo que agrupa las órdenes y ventas por mes y año."
+    columns:
+      - name: mes
+        description: "Nombre del mes."
+      - name: anyo
+        description: "Año."
+      - name: total_ordenes
+        description: "Número total de órdenes en el mes."
+      - name: valor_total_ventas
+        description: "Valor total de las ventas en el mes."

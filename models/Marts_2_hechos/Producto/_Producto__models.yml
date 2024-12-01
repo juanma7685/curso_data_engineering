@@ -1,0 +1,103 @@
+
+version: 2
+
+models:
+  - name: tasa_devoluciones
+    description: "Tabla que muestra la tasa de devoluciones por producto"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: category
+        description: "Categoría del producto"
+      - name: precio
+        description: "Precio del producto"
+      - name: tasa_devoluciones
+        description: "Tasa de devoluciones del producto"
+
+  - name: Rating_historico
+    description: "Tabla que compara las calificaciones actuales e históricas de los productos"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: category
+        description: "Categoría del producto"
+      - name: calificacion_promedio_actual
+        description: "Calificación promedio actual del producto"
+      - name: numero_calificaciones_actuales
+        description: "Número de calificaciones actuales del producto"
+      - name: calificacion_promedio_historica
+        description: "Calificación promedio histórica del producto"
+      - name: numero_calificaciones_historicas
+        description: "Número de calificaciones históricas del producto"
+      - name: diferencia_calificacion_promedio
+        description: "Diferencia entre la calificación promedio actual e histórica"
+      - name: diferencia_numero_calificaciones
+        description: "Diferencia entre el número de calificaciones actuales e históricas"
+
+  - name: producto_ventas
+    description: "Tabla que muestra las ventas y facturación por producto"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: category
+        description: "Categoría del producto"
+      - name: precio
+        description: "Precio del producto"
+      - name: total_facturado
+        description: "Total facturado por el producto"
+      - name: total_vendido
+        description: "Total vendido del producto"
+
+  - name: Precio_historico
+    description: "Tabla que muestra la diferencia de precio histórica de los productos"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: precio_original
+        description: "Precio original del producto"
+      - name: precio_actual
+        description: "Precio actual del producto"
+      - name: price_difference
+        description: "Diferencia de precio entre el original y el actual"
+
+  - name: categoria_ventas
+    description: "Tabla que muestra las ventas y facturación por categoría"
+    columns:
+      - name: category
+        description: "Categoría del producto"
+      - name: total_facturado
+        description: "Total facturado por la categoría"
+      - name: total_vendido
+        description: "Total vendido de la categoría"
+
+  - name: categoria_avg_calificaciones
+    description: "Tabla que muestra el promedio de calificaciones por categoría"
+    columns:
+      - name: category
+        description: "Categoría del producto"
+      - name: promedio_calificacion
+        description: "Promedio de calificaciones de la categoría"
+      - name: numero_calificaciones
+        description: "Número de calificaciones de la categoría"
+
+  - name: avg_revisiones_productos
+    description: "Tabla que muestra el promedio de calificaciones por producto"
+    columns:
+      - name: product_id
+        description: "ID del producto"
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: category
+        description: "Categoría del producto"
+      - name: calificacion_promedio
+        description: "Calificación promedio del producto"
+      - name: numero_calificaciones
+        description: "Número de calificaciones del producto"
