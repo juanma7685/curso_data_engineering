@@ -306,7 +306,7 @@ models:
       - name: category
         description: "Nombre de la categoría"
 
-  - name: stg_sql_server_dbo__snap_product
+  - name: stg_sql_server_dbo_snap_product
     description: "Tabla de staging para productos con snapshot"
     columns:
       - name: product_id
