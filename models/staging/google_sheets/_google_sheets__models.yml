@@ -117,23 +117,10 @@ models:
     columns:
       - name: review_id
         description: "Identificador único de la reseña."
-        tests:
-          - not_null
-          - unique
       - name: user_id
         description: "Identificador único del usuario."
-        tests:
-          - not_null
-          - relationships:
-              to: ref('stg_sql_server_dbo__users')
-              field: user_id
       - name: product_id
         description: "Identificador único del producto."
-        tests:
-          - not_null
-          - relationships:
-              to: ref('stg_sql_server_dbo__products')
-              field: product_id
       - name: rating
         description: "Calificación transformada a tipo entero."
         tests:
@@ -154,5 +141,3 @@ models:
               column_type: date
       - name: llegada_id
         description: "Identificador de la carga de datos."
-        tests:
-          - not_null

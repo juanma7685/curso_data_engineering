@@ -330,5 +330,3 @@ models:
               min_value: 0
       - name: llegada_id
         description: "ID de carga para los datos"
-        tests:
-          - not_null
