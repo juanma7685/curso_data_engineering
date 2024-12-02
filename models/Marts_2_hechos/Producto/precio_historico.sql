@@ -7,7 +7,7 @@ SELECT
     dp.precio as precio_actual,
     ABS(precio_original - precio_actual) AS price_difference
 FROM {{ ref("dim_products") }} dp
-INNER JOIN {{ ref("products_snapshot") }} ps 
+INNER JOIN {{ ref("product_snap") }} ps 
 ON dp.product_id = ps.product_id
 WHERE price_difference > 0
 ORDER BY price_difference DESC

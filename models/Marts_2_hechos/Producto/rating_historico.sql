@@ -4,7 +4,7 @@ WITH reviews_snapshot AS (
         rs.product_id,
         rs.rating AS rating_snapshot,
         rs.comments AS comments_snapshot
-    FROM {{ ref("reviews_snapshot") }} rs
+    FROM {{ ref("review_snap") }} rs
 ),
 
 calificacion_promedio_actual AS (

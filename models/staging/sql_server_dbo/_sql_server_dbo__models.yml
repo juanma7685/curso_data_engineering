@@ -305,3 +305,30 @@ models:
           - not_null
       - name: category
         description: "Nombre de la categoría"
+
+  - name: stg_sql_server_dbo__snap_product
+    description: "Tabla de staging para productos con snapshot"
+    columns:
+      - name: product_id
+        description: "Identificador único para el producto"
+        tests:
+          - unique
+          - not_null
+      - name: precio
+        description: "Precio del producto"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+      - name: nombre_producto
+        description: "Nombre del producto"
+      - name: category_id
+        description: "Identificador único para la categoría del producto"
+      - name: inventory
+        description: "Inventario del producto"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+      - name: llegada_id
+        description: "ID de carga para los datos"
+        tests:
+          - not_null
