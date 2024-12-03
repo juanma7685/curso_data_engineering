@@ -1,6 +1,15 @@
+{{
+  config(
+    materialized='incremental',
+    unique_key='review_id'
+  )
+}}
+
 with
 
-    source as (select * from {{ source("google_sheets", "reviews") }}),
+    source as (
+        select * from {{ source("google_sheets", "reviews") }}
+    ),
 
     renamed as (
 
@@ -16,13 +25,8 @@ with
 
     )
 
+    select * from renamed
+
 {% if is_incremental() %}
-
-    select * from renamed
-    where llegada_id > (select max(llegada_id) from {{ this }})
-
-{% else %}
-
-    select * from renamed
-
+where llegada_id > (select max(llegada_id) from {{ this }})
 {% endif %}
