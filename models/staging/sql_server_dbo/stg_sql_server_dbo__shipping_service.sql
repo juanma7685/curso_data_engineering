@@ -15,12 +15,21 @@ renamed as (
         shipping_service,
         _DLT_LOAD_ID as llegada_id
     from source
+),
+
+deduplicated as (
+    select *, 
+           row_number() over (partition by shipping_service_id order by llegada_id desc) as row_num
+    from renamed
 )
 
-select distinct * from renamed
+select *
+from deduplicated
+where row_num = 1
+
 
 {% if is_incremental() %}
 
-where llegada_id > (select max(llegada_id) from {{ this }})
+and llegada_id > (select max(llegada_id) from {{ this }})
 
 {% endif %}
